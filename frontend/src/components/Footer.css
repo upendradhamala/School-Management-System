@@ -1,0 +1,16 @@
+
+#footer{
+    grid-area:footer;
+    display:grid;
+    place-items: center;
+    place-content: center;
+    padding:4px;
+    padding-bottom: 0px;
+    /* bottom:0px;
+    position: absolute; */
+}
+.emoji{
+    /* display: inline-block; */
+    color:red;
+    font-size: 15px;
+}

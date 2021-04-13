@@ -1,18 +1,40 @@
 .navbar {
     background: #ffffff;
     grid-area: nav;
-    height: 60px;
+    background:steelblue;
+
+    height: 70px;
     display: flex;
     align-items: center;
+    /* align-content: center; */
     justify-content: space-between;
     padding: 0 30px 0 30px;
-    border-bottom: 1px solid lightgray;
+    /* overflow:auto; */
+    /* border-bottom: 1px solid #fc1100; */
   }
-  
+  .navbar p{
+    padding:2px;
+    /* overflow:hidden; */
+    /* display:grid; */
+    /* place-content: center;
+    place-items: center; */
+    /* border */
+    /* overflow:hidden; */
+    margin:auto;
+    font-size: 30px;
+    text-transform: uppercase;
+    /* display: inline; */
+    color:white;
+        /* font: red !important; */
+
+  }
   .nav_icon {
     display: none;
   }
-  
+  .loggedinas{
+    font-size: 15px;
+    color:white;
+  }
   .nav_icon > i {
     font-size: 26px;
     color: #a5aaad;
@@ -56,10 +78,23 @@
     .nav_icon {
       display: inline;
     }
+    .navbar p{
+      font-size: 22px;
+    }
   }
   
   @media only screen and (max-width: 480px) {
     .navbar__left {
+      display: none;
+    }
+    .navbar p{
+      font-size: 18px;
+    }
+  }
+
+  @media only screen and (max-width: 580px) {
+  
+    .navbar p{
       display: none;
     }
   }
