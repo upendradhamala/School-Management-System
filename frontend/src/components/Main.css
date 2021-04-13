@@ -3,7 +3,13 @@ main {
     grid-area: main;
     overflow-y: auto;
   }
-  
+  .card-handler{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    
+    /* grid-template-rows: 1fr  2fr; */
+ }
   .main__container {
     padding: 20px 35px;
   }
@@ -145,14 +151,14 @@ main {
     margin-top: 30px;
   }
   
-  .card1 {
+  /* .card1 {
     background: #d1ecf1;
     color: #35a4ba;
     text-align: center;
     padding: 25px;
     border-radius: 5px;
     font-size: 14px;
-  }
+  } */
   
   .card2 {
     background: #d2f9ee;
@@ -181,8 +187,14 @@ main {
     font-size: 14px;
   }
   
-  @media only screen and (max-width: 855px) {
-    .main__cards {
+
+  @media only screen and (max-width:800px){
+    .card-handler{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    /* .main__cards {
       grid-template-columns: 1fr;
       gap: 10px;
       margin-bottom: 0;
@@ -191,6 +203,8 @@ main {
     .charts {
       grid-template-columns: 1fr;
       margin-top: 30px;
+    } */
+    .card-handler{
+      grid-template-columns: 1fr ;
     }
   }
-  

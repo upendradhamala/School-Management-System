@@ -50,7 +50,7 @@
   }
   
   .sidebar__link {
-    color: #034a66;
+    color: #350bf0;
     padding: 10px;
     cursor: pointer;
     border-radius: 3px;
@@ -64,7 +64,7 @@
   
   .active_menu_link {
     background: #d61663;
-    color: #034a66;
+    color: #350bf0;
   }
   
   .active_menu_link .linked {
@@ -97,12 +97,12 @@
   .sidebar__logout {
     margin-top: 20px;
     padding: 10px;
-    color: #f00b25;
+    color: #350bf0;
   }
   
   .sidebar__logout  .linked {
     text-decoration: none;
-    color: #f00b25;
+    color: white;
     font-weight: 700;
     text-transform: uppercase;
   }
