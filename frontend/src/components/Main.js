@@ -1,5 +1,6 @@
 import './Main.css'
 import DashboardCard from './DashboardCard'
+import Footer from './Footer'
 const Main = () => {
   return (
     <main>
@@ -23,6 +24,7 @@ const Main = () => {
 
         {/* <DashboardCard/> */}
       </div>
+      <Footer />
     </main>
   )
 }

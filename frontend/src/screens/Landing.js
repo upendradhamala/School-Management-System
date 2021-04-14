@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
+// import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import Main from '../components/Main'
 import './Landing.css'
@@ -17,7 +17,7 @@ const Landing = () => {
       <Header sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
       <Main />
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }

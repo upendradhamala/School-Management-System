@@ -6,11 +6,22 @@
     place-content: center;
     padding:4px;
     padding-bottom: 0px;
-    /* bottom:0px;
-    position: absolute; */
+    bottom:0px;
+    /* position: absolute; */
 }
 .emoji{
     /* display: inline-block; */
     color:red;
     font-size: 15px;
 }
+
+
+@media only screen and (min-width: 800px) {
+  
+  #footer{
+margin-top: 115px;
+/* bottom:0px; */
+position: relative;
+  }
+  }
+  
