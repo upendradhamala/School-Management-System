@@ -3,7 +3,7 @@ import Landing from './screens/Landing'
 // import { Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './screens/Login'
-
+import StudentRegister from './screens/StudentRegister'
 const App = () => {
   return (
     <Router>
@@ -11,6 +11,7 @@ const App = () => {
         <Switch>
           <Route path='/' component={Landing} exact />
           <Route path='/login' component={Login} exact />
+          <Route path='/student_register' component={StudentRegister} exact />
         </Switch>
       </div>
     </Router>

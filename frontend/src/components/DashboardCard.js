@@ -6,6 +6,8 @@ const DashboardCard = ({ title, number, image }) => {
     <div className=''>
       <div className='card1'>
         <h1>{title}</h1>
+        {/* a warning is being shown below for putting a div element inside a p tag element  */}
+        {/* which is not allowed in some way  */}
         <p>
           <Counter upperlimit={number} />
         </p>
