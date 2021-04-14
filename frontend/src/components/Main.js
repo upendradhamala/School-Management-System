@@ -1,13 +1,20 @@
 import './Main.css'
 import DashboardCard from './DashboardCard'
 import Footer from './Footer'
+import items from '../Data'
 const Main = () => {
   return (
     <main>
       <div className='main__container'>
         <div className='card-handler'>
-          <DashboardCard title=' Classes' number='13' image='image0' />
-          <DashboardCard title=' Students' number='1000' image='image' />
+          {items.map((item) => (
+            <DashboardCard
+              title={item.title}
+              number={item.number}
+              image={item.image}
+            />
+          ))}
+          {/* <DashboardCard title=' Students' number='1000' image='image' />
           <DashboardCard title=' Teachers' number='150' image='image1' />
           <DashboardCard
             title='Non-Teaching Staffs'
@@ -19,7 +26,7 @@ const Main = () => {
             title=' Salary Expenses'
             number='300000'
             image='image4'
-          />
+          /> */}
         </div>
 
         {/* <DashboardCard/> */}

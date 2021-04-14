@@ -6,7 +6,7 @@ const DashboardCard = ({ title, number, image }) => {
       <div className='card1'>
         <h1>{title}</h1>
         <p>{number}</p>
-        {image}
+        <img  src={image} alt="No Image Data" />
       </div>
     </div>
   )
