@@ -8,9 +8,9 @@ const DashboardCard = ({ title, number, image }) => {
         <h1>{title}</h1>
         {/* a warning is being shown below for putting a div element inside a p tag element  */}
         {/* which is not allowed in some way  */}
-        <p>
+        <div className="p">
           <Counter upperlimit={number} />
-        </p>
+        </div>
         <img src={image} alt='No Image Data' />
       </div>
     </div>

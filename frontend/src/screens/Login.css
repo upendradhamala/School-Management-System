@@ -1,6 +1,14 @@
 .container{
     height:100vh;
-    background: rgb(129, 44, 44);
+    background: url("login.jpg");
+    padding:10px;
+    /* overflow-y: hidden; */
+    /* display: grid; */
+    /* place-content: center; */
+    /* place-items: center; */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
     padding: 10px;
     /* display: grid; */
     /* place-items: center; */
@@ -14,6 +22,7 @@
     max-width: 340px;
     height:400px;
     margin-top: 100px;
+    border-radius: 8px;
     background: rgb(22, 105, 101);
 }
 .layout h1{

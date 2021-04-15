@@ -1,12 +1,15 @@
 .container1{
-    height:155vh;
+    height:160vh;
 
-    background: rgb(143, 175, 188);
+    background: url("student.jpg");
     padding:10px;
     /* overflow-y: hidden; */
     /* display: grid; */
     /* place-content: center; */
     /* place-items: center; */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
 }
 .outer-layout{
     /* max-height:650px; */
@@ -14,6 +17,7 @@
     background: rgb(99, 154, 206);
     margin: auto;
     padding:10px;
+    border-radius: 7px;
 }
 .outer-layout h1{
     text-align: center;
@@ -21,13 +25,18 @@
     /* margin-top: 20px; */
 }
 
-.outer-layout form{
+
+.outer-layout .form-inner{
     padding:20px 10px 10px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap:5px;
+    /* border:2px solid red; */
 
 
+}
+form{
+padding:3px;
 }
 .form-control{
     /* border:2px solid red; */
@@ -42,11 +51,33 @@ padding:10px;
     color:white;
 }
 .form-control input{
-    padding :8px 8px  8px 2px;
+    padding :8px 8px  8px 5px;
     width:100%;
     outline:none;
     font-size: 15px;
+    border-radius: 7px;
+    border:none;
+    /* padding-left: 2px; */
 
+}
+.form-control select{
+    padding :8px 8px  8px 5px;
+    width:100%;
+    outline:none;
+    font-size: 15px;
+    border-radius: 7px;
+    border:none;
+    
+}
+.avatar{
+    /* padding :8px 8px  8px 5px;
+    width:100%;
+    outline:none; */
+    /* font-size: 15px;
+    border-radius: 7px;
+    border-radius: 2px solid red;
+    border:none; */
+    /* width:100%; */
 }
 /* .register-btn{
 
@@ -57,18 +88,27 @@ font-size: 15px;
     padding:10px;
     width:50%;
     margin:auto;
+    display: block;
+    /* align-items: center;
+    align-content: center; */
+    text-transform: uppercase;
     outline:none;
     border:none;
+    /* margin-left: 100px; */
+
+    /* border:3px solid red; */
     border-radius: 5px;
     color:white;
     background: rgb(3, 5, 102);
     cursor:pointer;
+    font-size: 15px;
+
 }
 .btn-register:hover{
     opacity: 0.7;
 }
 @media only screen and (max-width: 700px) {
-    .outer-layout form{
+    .outer-layout .form-inner{
         grid-template-columns: 1fr;
     }
 }
@@ -81,3 +121,6 @@ font-size: 15px;
         height:100vh;
     }
 }
+
+
+/* the below is for the student fees file */

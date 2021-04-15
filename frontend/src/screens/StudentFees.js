@@ -1,38 +1,26 @@
 import React from 'react'
 import './Student.css'
-const StudentRegister = () => {
+const StudentFees = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     console.log('Form submitted.')
   }
   return (
-    <div className='container1'>
+    <div class='container1'>
       <div className='outer-layout'>
         <h1>Register Student</h1>
         <form onSubmit={submitHandler}>
           <div className='form-inner'>
             <div className='form-control'>
-              <label htmlFor='name'>Full Name</label>
+              <label for='name'>Student Name</label>
               <input type='text' />
             </div>
             {/* <div className='form-control'>
-            <label htmlFor='name'>Full Name</label>
+            <label for='name'>Full Name</label>
             <input type='text' />
           </div>{' '} */}
             <div className='form-control'>
-              <label htmlFor='name'>Email</label>
-              <input type='email' />
-            </div>{' '}
-            <div className='form-control'>
-              <label htmlFor='name'>Address</label>
-              <input type='text' />
-            </div>{' '}
-            <div className='form-control'>
-              <label htmlFor='name'>Gender</label>
-              <input type='text' />
-            </div>{' '}
-            <div className='form-control'>
-              <label htmlFor='name'>Class</label>
+              <label for='name'>Class</label>
               <select id='class'>
                 <option value='Nursery'>Nursery</option>
                 <option value='LKG'>LKG</option>
@@ -51,32 +39,38 @@ const StudentRegister = () => {
               </select>
             </div>{' '}
             <div className='form-control'>
-              <label htmlFor='name'>Phone Number</label>
+              <label for='name'>Roll No</label>
               <input type='text' />
             </div>{' '}
             <div className='form-control'>
-              <label htmlFor='name'>Parent's Name</label>
-              <input type='text' />
-            </div>
-            <div className='form-control'>
-              <label htmlFor='name'>Joining Date</label>
-              <input type='date' />
+              <label for='name'>Monthly Fees</label>
+              <input type='number' />
             </div>{' '}
             <div className='form-control'>
-              <label htmlFor='name'>Age</label>
-              <input type='text' />
+              <label for='name'>Hostel Fees</label>
+              <input type='number' />
+            </div>{' '}
+            <div className='form-control'>
+              <label for='name'>Laboratory Fees</label>
+              <input type='number' />
+            </div>{' '}
+            <div className='form-control'>
+              <label for='name'>Computer Fees</label>
+              <input type='number' />
             </div>
             <div className='form-control'>
-              <label htmlFor='name'>
-                Upload Picture
-                <input className='avatar' type='file' size='60' />
-              </label>
+              <label for='name'>Exam Fees</label>
+              <input type='number' />
+            </div>{' '}
+            <div className='form-control'>
+              <label for='name'>Miscellaneous</label>
+              <input type='number' />
             </div>
             {/* <div className="register-btn"> */}
             {/* </div> */}
           </div>
           <button className='btn-register' type='submit'>
-            Register Student
+            Submit Details
           </button>
         </form>
       </div>
@@ -84,4 +78,4 @@ const StudentRegister = () => {
   )
 }
 
-export default StudentRegister
+export default StudentFees
