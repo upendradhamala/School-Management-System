@@ -29,11 +29,19 @@ const StudentRegister = () => {
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Gender</label>
-              <input type='text' />
+              <select>
+                <option value=''>Select</option>
+                <option value='male'>Male</option>
+
+                <option value='female'>Female</option>
+                <option value='LKG'>Others</option>
+              </select>
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Class</label>
               <select id='class'>
+                <option value='Nursery'>Select</option>
+
                 <option value='Nursery'>Nursery</option>
                 <option value='LKG'>LKG</option>
                 <option value='UKG'>UKG</option>

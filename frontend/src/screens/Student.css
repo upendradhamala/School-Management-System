@@ -123,4 +123,87 @@ font-size: 15px;
 }
 
 
-/* the below is for the student fees file */
+/* the below is for the student Details file */
+.container2{
+    height:100vh;
+    padding:10px;
+    background: rgb(175, 63, 63);
+}
+
+.outer {
+    /* height:80vh; */
+    margin:auto;
+    max-width: 800px;
+    background: rgb(99, 154, 206);
+    padding:10px;
+    /* display: grid; */
+
+}
+.outer input{
+    /* border:2px solid red; */
+    /* margin:auto; */
+    width:70%;
+    font-size: 15px;
+    border-radius: 5px 0 0px 5px;
+    
+    border:none;
+    outline:none;
+    padding:10px;
+    margin-bottom: 20px;
+}
+.search-icon{
+    /* border:1px solid red; */
+    padding:10px;
+    background: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius:5px ;
+    /* border-radius:0 px 5px 5px 0px ; */
+
+}
+.classes{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-content: center;
+    gap:15px;
+    margin-top: 30px;
+
+   /* text-align: center; */
+    /* place-items: center; */
+    /* place-content: center; */
+}
+.class-list{
+    background: rgb(61, 10, 10);
+    padding:20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    /* color:white; */
+    /* max-width: 300px; */
+ 
+
+}
+.class-list:hover{
+    opacity: 0.5;
+}
+.class-list p{
+    color:white;
+    
+    /* text-underline-offset: none; */
+
+}
+ .linker{
+    text-decoration: none  ;
+
+ }
+/* link{
+    color:white;
+} */
+.outer h3{
+    color:rgb(0, 18, 182);
+    border:2px solid rgb(224, 197, 197);
+    padding:5px;
+    max-width: 30%;
+    background: wheat;
+    /* background: yellow; */
+}

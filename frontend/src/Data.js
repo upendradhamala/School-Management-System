@@ -23,7 +23,7 @@ const items = [
     number: 30,
     image: '/images/Non-teaching.jpeg',
   },
-  ,
+
   {
     _id: 5,
     title: 'Income',

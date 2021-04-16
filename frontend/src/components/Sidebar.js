@@ -20,20 +20,20 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
       <div className='sidebar__menu'>
         <div className='sidebar__link active_menu_link'>
           <i className='fa fa-home'></i>
-          <Link className='linked' to=''>
+          <Link className='linked' to='/'>
             Dashboard
           </Link>
         </div>
         <h2>Students Section</h2>
         <div className='sidebar__link'>
           <i className='fa fa-male' aria-hidden='true'></i>
-          <Link className='linked' to='/student_register'>
+          <Link className='linked' to='/student-register'>
             Student Registration
           </Link>
         </div>
         <div className='sidebar__link'>
           <i className='fa fa-coins'></i>
-          <Link className='linked' to='/student_fee'>
+          <Link className='linked' to='/student-fee'>
             Student Fees
           </Link>
         </div>

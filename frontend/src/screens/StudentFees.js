@@ -22,6 +22,8 @@ const StudentFees = () => {
             <div className='form-control'>
               <label for='name'>Class</label>
               <select id='class'>
+                <option value=''>Select</option>
+
                 <option value='Nursery'>Nursery</option>
                 <option value='LKG'>LKG</option>
                 <option value='UKG'>UKG</option>
