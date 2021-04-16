@@ -2,67 +2,67 @@ const classes = [
   {
     _id: 1,
     class: 'Nursery',
-    target: '/nursery',
+    target: 'student_details/details',
   },
   {
     _id: 2,
     class: 'LKG',
-    target: '/lkg',
+    target: '/',
   },
   {
     _id: 3,
     class: 'UKG',
-    target: '/ukg',
+    target: '/',
   },
   {
     _id: 4,
     class: 'One',
-    target: '/one',
+    target: '/',
   },
   {
     _id: 5,
     class: 'Two',
-    target: '/two',
+    target: '/',
   },
   {
     _id: 6,
     class: 'Three',
-    target: '/three',
+    target: '/',
   },
   {
     _id: 7,
     class: 'Four',
-    target: '/four',
+    target: '/',
   },
   {
     _id: 8,
     class: 'Five',
-    target: '/five',
+    target: '/',
   },
   {
     _id: 9,
     class: 'Six',
-    target: '/six',
+    target: '/',
   },
   {
     _id: 10,
     class: 'Seven',
-    target: '/seven',
+    target: '/',
   },
   {
     _id: 11,
     class: 'Eight',
-    target: '/eight',
+    target: '/',
   },
   {
     _id: 12,
     class: 'Nine',
-    target: '/nine',
+    target: '/',
   },
   {
     _id: 13,
     class: 'Ten',
-    target: '/ten',
+    target: '/',
   },
 ]
 
