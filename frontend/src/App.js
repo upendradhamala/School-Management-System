@@ -7,7 +7,7 @@ import StudentRegister from './screens/StudentRegister'
 import StudentFees from './screens/StudentFees'
 import StudentDetails from './screens/StudentDetails'
 import StudentDeepDetails from './screens/StudentDeepDetails'
-
+import StudentAttendance from './screens/StudentAttendance'
 const App = () => {
   return (
     <Router>
@@ -18,7 +18,16 @@ const App = () => {
           <Route path='/student-register' component={StudentRegister} />
           <Route path='/student-fee' component={StudentFees} />
           <Route path='/student_details' component={StudentDetails} exact />
-          <Route path='/student_details/details' component={StudentDeepDetails} exact/>
+          <Route
+            path='/student_details/details'
+            component={StudentDeepDetails}
+            exact
+          />
+          <Route
+            path='/student_attendance/:class'
+            component={StudentAttendance}
+            exact
+          />
         </Switch>
       </div>
     </Router>

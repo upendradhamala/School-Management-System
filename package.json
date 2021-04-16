@@ -1,0 +1,21 @@
+{
+  "name": "school_management_system",
+  "version": "1.0.0",
+  "description": "This is a school management system built using MERN stack",
+  "main": "server.js",
+  "scripts": {
+  "start" :"node backend/server" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upendradhamala/School-Management-System.git"
+  },
+  "author": "Upendra Dhamala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/upendradhamala/School-Management-System/issues"
+  },
+  "homepage": "https://github.com/upendradhamala/School-Management-System#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
