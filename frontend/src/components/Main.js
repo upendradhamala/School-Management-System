@@ -11,6 +11,7 @@ const Main = () => {
             // <div key={item._id}>
             <DashboardCard
               key={item._id}
+              takeme={item.takeme}
               title={item.title}
               number={item.number}
               image={item.image}

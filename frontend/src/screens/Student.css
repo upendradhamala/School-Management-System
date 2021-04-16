@@ -175,7 +175,6 @@ font-size: 15px;
 }
 .class-list{
     background: rgb(61, 10, 10);
-    padding:20px;
     border-radius: 5px;
     cursor: pointer;
 
@@ -189,6 +188,8 @@ font-size: 15px;
 }
 .class-list p{
     color:white;
+        padding:20px;
+
     
     /* text-underline-offset: none; */
 

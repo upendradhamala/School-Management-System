@@ -51,7 +51,7 @@
   
   .sidebar__link {
     color: #350bf0;
-    padding: 10px;
+   
     cursor: pointer;
     border-radius: 3px;
     display: grid;
@@ -74,6 +74,7 @@
   .sidebar__link  .linked{
     text-decoration: none;
     color: white;
+    padding: 10px;
     font-weight: 700;
     /* margin-right: 2px; */
     /* border: 2px solid red; */
@@ -91,6 +92,8 @@
   .sidebar__link > i {
     margin-right: 10px;
     font-size: 18px;
+    padding: 10px;
+    width: 18px;
     /* border: 2px solid red; */
   }
   
