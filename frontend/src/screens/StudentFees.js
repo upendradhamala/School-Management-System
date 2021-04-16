@@ -8,7 +8,7 @@ const StudentFees = () => {
   return (
     <div class='container1'>
       <div className='outer-layout'>
-        <h1>Register Student</h1>
+        <h1>Student Fees Section</h1>
         <form onSubmit={submitHandler}>
           <div className='form-inner'>
             <div className='form-control'>

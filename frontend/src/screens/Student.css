@@ -235,9 +235,17 @@ th, td {
   {
     height:100vh;
     padding:10px;
+    overflow-y:auto;
     background: rgb(175, 63, 63);
   }
   .container3 .outer{
       max-width: 90%;
       background: rgb(190, 194, 187);
   }
+
+  td:nth-child(12)  {
+   text-align: center;
+  }
+  td:nth-child(11)  {
+    text-align: center;
+   }
