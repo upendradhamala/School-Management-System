@@ -8,6 +8,7 @@ import StudentFees from './screens/StudentFees'
 import StudentDetails from './screens/StudentDetails'
 import StudentDeepDetails from './screens/StudentDeepDetails'
 import StudentAttendance from './screens/StudentAttendance'
+import AllStudents from './screens/AllStudents'
 const App = () => {
   return (
     <Router>
@@ -28,6 +29,7 @@ const App = () => {
             component={StudentAttendance}
             exact
           />
+          <Route path='/students' component={AllStudents} exact />
         </Switch>
       </div>
     </Router>

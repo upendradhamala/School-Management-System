@@ -9,7 +9,7 @@ const items = [
   {
     _id: '2',
     title: 'Students',
-    takeme: '/student_details',
+    takeme: '/students',
     number: 2000,
     image: '/images/students.jpg',
   },
