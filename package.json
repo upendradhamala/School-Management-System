@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node backend/server",
-    "server":"nodemon backend/server",
-    "client":"npm start --prefix frontend",
-    "dev":"concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/upendradhamala/School-Management-System#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4"
   },
   "devDependencies": {
     "concurrently": "^6.0.2",

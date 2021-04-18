@@ -2,10 +2,15 @@
 import express from 'express'
 // import products from "./data/"
 // const express = require('express')
+import dotenv from 'dotenv'
+import connectDB from './config/db.js'
 import items from './data/Data.js'
 import classes from './data/ClassData.js'
 // const items = require('./data/Data')
 // const classes = require('./data/ClassData')
+// d0t
+dotenv.config()
+connectDB()
 const app = express()
 app.get('/', (req, res) => {
   res.send('API is running.')
@@ -33,4 +38,5 @@ app.get('/api/students/class/:id', (req, res) => {
   // console.log(classes)
   res.json(classname)
 })
-app.listen(5000, console.log('Server running on port 5000'))
+const PORT = process.env.PORT || 5000
+app.listen(PORT, console.log(`Server running on port ${PORT}`))
