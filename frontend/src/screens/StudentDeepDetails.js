@@ -18,7 +18,7 @@ const StudentDetails = ({ match }) => {
   }, [])
   // const classInfo = students.find((i) => i._id == matchid)
   // console.log(classInfo)
-  var  i=0;
+  var  i=1;
   const  classset = []
   classset.push(students)
   console.log(classset)

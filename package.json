@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "This is a school management system built using MERN stack",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-  "start" :"node backend/server" },
+    "start": "node backend/server",
+    "server":"nodemon backend/server",
+    "client":"npm start --prefix frontend",
+    "dev":"concurrently \"npm run server\" \"npm run client\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/upendradhamala/School-Management-System.git"
@@ -18,5 +22,9 @@
   "homepage": "https://github.com/upendradhamala/School-Management-System#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.2",
+    "nodemon": "^2.0.7"
   }
 }
