@@ -1,8 +1,21 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './Main.css'
 import DashboardCard from './DashboardCard'
 import Footer from './Footer'
-import items from '../Data'
+// import items from '../Data'
 const Main = () => {
+  const [items, setItems] = useState([])
+  useEffect(() => {
+    //  console.log("this is me upendra dhamala.")
+    // await axios.get('/api/students/:classes')
+    const fetchItems = async () => {
+      const { data } = await axios.get('/api/students/')
+      // console.log(data)
+      setItems(data)
+    }
+    fetchItems()
+  }, [])
   return (
     <main>
       <div className='main__container'>
@@ -10,30 +23,15 @@ const Main = () => {
           {items.map((item) => (
             // <div key={item._id}>
             <DashboardCard
-              key={item._id}
-              takeme={item.takeme}
-              title={item.title}
-              number={item.number}
-              image={item.image}
+              key={item?._id}
+              takeme={item?.takeme}
+              title={item?.title}
+              number={item?.number}
+              image={item?.image}
             />
             // </div>
           ))}
-          {/* <DashboardCard title=' Students' number='1000' image='image' />
-          <DashboardCard title=' Teachers' number='150' image='image1' />
-          <DashboardCard
-            title='Non-Teaching Staffs'
-            number='20'
-            image='image2'
-          />
-          <DashboardCard title=' Income' number='1200000' image='image3' />
-          <DashboardCard
-            title=' Salary Expenses'
-            number='300000'
-            image='image4'
-          /> */}
         </div>
-
-        {/* <DashboardCard/> */}
       </div>
       <Footer />
     </main>

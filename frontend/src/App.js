@@ -19,7 +19,7 @@ const App = () => {
           <Route path='/student-fee' component={StudentFees} />
           <Route path='/student_details' component={StudentDetails} exact />
           <Route
-            path='/student_details/details'
+            path='/student_details/details/:id'
             component={StudentDeepDetails}
             exact
           />

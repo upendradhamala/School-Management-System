@@ -1,13 +1,30 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+// import axios from 'axios'
 import classes from '../ClassData'
-import TableFill from '../components/TableFill'
-import ClassItems from '../components/ClassItems'
-const StudentDetails = () => {
+// import TableFill from '../components/TableFill'
+// import ClassItems from '../components/ClassItems'
+const StudentDetails = ({ match }) => {
+  const matchid = match.params.id
+  const [students, setStudents] = useState([])
+  useEffect(() => {
+    const getStudents = async () => {
+      //the following request to the backend fetches all the student details
+      const { data } = await axios.get(`/api/students/class/${matchid}`)
+      setStudents(data)
+    }
+    getStudents()
+  }, [])
+  // const classInfo = students.find((i) => i._id == matchid)
+  // console.log(classInfo)
+  const  classset = []
+  classset.push(students)
+  console.log(classset)
+  // console.log(classes)
   const searchSubmit = (e) => {
     e.preventDefault()
     console.log('clicked')
-    // alert("Search icon is clicked.")
   }
   return (
     <div className='container3'>
@@ -20,7 +37,7 @@ const StudentDetails = () => {
           <table>
             <thead>
               <tr>
-                <th>SN</th>
+                <th>ID</th>
                 <th>Photo</th>
                 <th>Student Name</th>
                 <th>Class</th>
@@ -35,8 +52,15 @@ const StudentDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(classes)}
-              {classes.map((data) => (
+              {/* {match.params.id===data.id && */}
+              {console.log(matchid)}
+              {/* {"A"==="A" ?():(
+  
+)} */}
+              {/* for displaying the information about the particular class
+ only we first should have the data of that class only 
+ . We cannot make selection inside the map method by using double and operator. */}
+              {classset.map((data) => (
                 <tr key={data._id} className='contents'>
                   <td>{data._id}</td>
                   <td>
@@ -67,6 +91,8 @@ const StudentDetails = () => {
                     ></i>
                   </td>
                 </tr>
+
+                // }
               ))}
             </tbody>
           </table>

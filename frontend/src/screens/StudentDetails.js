@@ -21,7 +21,8 @@ const StudentDetails = () => {
           {classes.map((classname) => (
             <ClassItems
               key={classname._id}
-              target={classname.target}
+              target={`/student_details/details/${classname._id}`}
+              //  target=
               classid={classname.class}
             />
           ))}
