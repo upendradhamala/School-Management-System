@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import classes from '../ClassData'
+// import classes from '../ClassData'
 
 import ClassItems from '../components/ClassItems'
 const StudentAttendance = () => {
@@ -18,7 +18,7 @@ const StudentAttendance = () => {
         <span className='search-icon' onClick={searchSubmit}>
           <i className='fas fa-search'></i>
         </span> */}
-
+{/* 
         <div className='classes'>
           {classes.map((classname) => (
             <ClassItems
@@ -27,7 +27,7 @@ const StudentAttendance = () => {
               classid={classname.class}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   )

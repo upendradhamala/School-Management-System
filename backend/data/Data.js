@@ -44,4 +44,5 @@ const items = [
 //the following export default items is the es module syntax
 // export default items
 //we will write the common js syntax for now
-module.exports = items
+// module.exports = items
+export default items

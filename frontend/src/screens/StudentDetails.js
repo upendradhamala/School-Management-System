@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import classes from '../ClassData'
-
+// import classes from '../ClassData'
+import axios from 'axios'
 import ClassItems from '../components/ClassItems'
 const StudentDetails = () => {
+  const [classes, setClasses] = useState([])
+  useEffect(() => {
+    const getClasses = async () => {
+      //the following request to the backend fetches all the student details
+      const { data } = await axios.get('/api/classes')
+      setClasses(data)
+    }
+    getClasses()
+  }, [])
   const searchSubmit = (e) => {
     e.preventDefault()
     console.log('clicked')

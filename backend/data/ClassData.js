@@ -25,12 +25,13 @@ const classes = [
     previous_dues: '100000',
     gender: 'Male',
   },
+
   {
     _id: '3',
     class: 'UKG',
     target: '/',
     image: '/images/girl.jpg',
-    student_name: 'Birendra Dhamala',
+    student_name: 'Dhamala',
     roll_no: '44',
     address: 'Kathmandu, Baneshwor',
     parents_name: 'Moti Dhamala',
@@ -171,4 +172,8 @@ const classes = [
 ]
 
 // export default classes
-module.exports = classes
+//following is the common js declaration way 
+
+// module.exports = classes
+// lets use es modules for faster 
+export default classes 

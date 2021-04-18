@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 // import axios from 'axios'
-import classes from '../ClassData'
+// import classes from '../ClassData'
 // import TableFill from '../components/TableFill'
 // import ClassItems from '../components/ClassItems'
 const StudentDetails = ({ match }) => {
@@ -18,6 +18,7 @@ const StudentDetails = ({ match }) => {
   }, [])
   // const classInfo = students.find((i) => i._id == matchid)
   // console.log(classInfo)
+  var  i=0;
   const  classset = []
   classset.push(students)
   console.log(classset)
@@ -37,6 +38,7 @@ const StudentDetails = ({ match }) => {
           <table>
             <thead>
               <tr>
+                <th>SN</th>
                 <th>ID</th>
                 <th>Photo</th>
                 <th>Student Name</th>
@@ -62,6 +64,7 @@ const StudentDetails = ({ match }) => {
  . We cannot make selection inside the map method by using double and operator. */}
               {classset.map((data) => (
                 <tr key={data._id} className='contents'>
+                  <td>{i++}</td>
                   <td>{data._id}</td>
                   <td>
                     <img style={{ height: '50px' }} src={data.image} alt='' />

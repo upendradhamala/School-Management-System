@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is a school management system built using MERN stack",
   "main": "server.js",
+  "type":"module",
   "scripts": {
   "start" :"node backend/server" },
   "repository": {
