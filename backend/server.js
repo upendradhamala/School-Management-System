@@ -13,10 +13,10 @@ import studentRoutes from './routes/studentRoutes.js'
 dotenv.config()
 connectDB()
 const app = express()
-app.get('/', (req, res) => {
-  res.send('API is running.')
-})
-app.get('/api/students', (req, res) => {
+// app.get('/', (req, res) => {
+//   res.send('API is running.')
+// })
+app.get('/dashboard', (req, res) => {
   //   res.send('Students route is running .')
   // const items = itemslist.find({})
   //following will convert the items to the json format

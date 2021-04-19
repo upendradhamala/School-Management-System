@@ -10,8 +10,8 @@ const Main = () => {
     //  console.log("this is me upendra dhamala.")
     // await axios.get('/api/students/:classes')
     const fetchItems = async () => {
-      const { data } = await axios.get('/api/students/')
-      // console.log(data)
+      const { data } = await axios.get('/dashboard')
+      console.log(data)
       setItems(data)
     }
     fetchItems()

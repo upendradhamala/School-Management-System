@@ -11,7 +11,7 @@ const AllStudents = ({ match }) => {
   useEffect(() => {
     const getStudents = async () => {
       //the following request to the backend fetches all the student details
-      const { data } = await axios.get(`/api/classes`)
+      const { data } = await axios.get(`/api/students`)
       setStudents(data)
     }
     getStudents()
@@ -39,7 +39,7 @@ const AllStudents = ({ match }) => {
             <thead>
               <tr>
                 <th>SN</th>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>Photo</th>
                 <th>Student Name</th>
                 <th>Class</th>
@@ -65,7 +65,7 @@ const AllStudents = ({ match }) => {
               {students.map((data) => (
                 <tr key={data._id} className='contents'>
                   <td>{i++}</td>
-                  <td>{data._id}</td>
+                  {/* <td>{data._id}</td> */}
                   <td>
                     <img style={{ height: '50px' }} src={data.image} alt='' />
                   </td>
