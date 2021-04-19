@@ -1,7 +1,12 @@
-import mongoose from 'mongoose '
-const studentSchema = mongoose.schema(
+import mongoose from 'mongoose'
+const studentSchema = mongoose.Schema(
   {
-    name: {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Admin',
+    },
+    student_name: {
       type: String,
       required: true,
     },
@@ -9,9 +14,9 @@ const studentSchema = mongoose.schema(
       type: String,
       required: true,
     },
-    rollNo: {
+
+    roll_no: {
       type: Number,
-      required: true,
     },
     address: {
       type: String,
@@ -38,10 +43,9 @@ const studentSchema = mongoose.schema(
     },
     email: {
       type: String,
-      unique: true,
       required: true,
     },
-    profile_pic: {
+    image: {
       type: String,
       required: true,
     },
