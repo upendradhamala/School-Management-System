@@ -40,7 +40,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra1@gmail.com',
   },
   {
     class: 'One',
@@ -54,7 +54,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra2@gmail.com',
   },
   {
     class: 'Two',
@@ -68,7 +68,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra3@gmail.com',
   },
   {
     class: 'Three',
@@ -82,7 +82,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra4@gmail.com',
   },
   {
     class: 'Four',
@@ -96,7 +96,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra5@gmail.com',
   },
   {
     class: 'Five',
@@ -110,7 +110,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra6@gmail.com',
   },
   {
     class: 'Six',
@@ -124,7 +124,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra7@gmail.com',
   },
   {
     class: 'Seven',
@@ -138,7 +138,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra8@gmail.com',
   },
   {
     class: 'Eight',
@@ -152,7 +152,49 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra9@gmail.com',
+  },
+  {
+    class: 'Eight',
+
+    image: '/images/girl.jpg',
+    student_name: 'Munu Dhamala',
+    roll_no: '44',
+    address: 'Kathmandu, Baneshwor',
+    parents_name: 'Moti Dhamala',
+    contact_no: '9864421289',
+    previous_dues: '100000',
+    gender: 'Male',
+    age: 24,
+    email: 'dhamalaupendrad9@gmail.com',
+  },
+  {
+    class: 'Eight',
+
+    image: '/images/girl.jpg',
+    student_name: 'Munu Dhamala',
+    roll_no: '44',
+    address: 'Kathmandu, Baneshwor',
+    parents_name: 'Moti Dhamala',
+    contact_no: '9864421289',
+    previous_dues: '100000',
+    gender: 'Male',
+    age: 24,
+    email: 'dhamalaupendra999@gmail.com',
+  },
+  {
+    class: 'Eight',
+
+    image: '/images/girl.jpg',
+    student_name: 'Munu Dhamala',
+    roll_no: '44',
+    address: 'Kathmandu, Baneshwor',
+    parents_name: 'Moti Dhamala',
+    contact_no: '9864421289',
+    previous_dues: '100000',
+    gender: 'Male',
+    age: 24,
+    email: 'dhamalaupendra9999@gmail.com',
   },
   {
     class: 'Nine',
@@ -166,7 +208,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra10@gmail.com',
   },
   {
     class: 'Ten',
@@ -180,7 +222,7 @@ const students = [
     previous_dues: '100000',
     gender: 'Male',
     age: 24,
-    email: 'dhamalaupendra@gmail.com',
+    email: 'dhamalaupendra11@gmail.com',
   },
 ]
 

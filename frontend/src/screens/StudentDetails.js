@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-// import classes from '../ClassData'
+import Classes from '../screens/classData'
 import axios from 'axios'
 import ClassItems from '../components/ClassItems'
 const StudentDetails = () => {
-  const [classes, setClasses] = useState([])
-  useEffect(() => {
-    const getClasses = async () => {
-      //the following request to the backend fetches all the student details
-      const { data } = await axios.get('/api/classes')
-      setClasses(data)
-    }
-    getClasses()
-  }, [])
+  console.log(Classes)
   const searchSubmit = (e) => {
     e.preventDefault()
     console.log('clicked')
@@ -27,12 +18,12 @@ const StudentDetails = () => {
         </span>
         <h3>Browse By Class</h3>
         <div className='classes'>
-          {classes.map((classname) => (
+          {Classes.map((classinfo) => (
             <ClassItems
-              key={classname._id}
-              target={`/student_details/details/${classname._id}`}
+              key={classinfo._id}
+              target={`/student_details/details/${classinfo.classname}`}
               //  target=
-              classid={classname.class}
+              classid={classinfo.classname}
             />
           ))}
         </div>

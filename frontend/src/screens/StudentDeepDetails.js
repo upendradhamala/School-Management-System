@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 // import ClassItems from '../components/ClassItems'
 const StudentDetails = ({ match }) => {
   const matchid = match.params.id
+  // console.log(matchid==="UKG")
   const [students, setStudents] = useState([])
   useEffect(() => {
     const getStudents = async () => {
@@ -18,10 +19,10 @@ const StudentDetails = ({ match }) => {
   }, [])
   // const classInfo = students.find((i) => i._id == matchid)
   // console.log(classInfo)
-  var  i=1;
-  const  classset = []
-  classset.push(students)
-  console.log(classset)
+  var i = 1
+  // const classset = []
+  // classset.push(students)
+  // console.log(classset)
   // console.log(classes)
   const searchSubmit = (e) => {
     e.preventDefault()
@@ -39,7 +40,7 @@ const StudentDetails = ({ match }) => {
             <thead>
               <tr>
                 <th>SN</th>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>Photo</th>
                 <th>Student Name</th>
                 <th>Class</th>
@@ -55,20 +56,22 @@ const StudentDetails = ({ match }) => {
             </thead>
             <tbody>
               {/* {match.params.id===data.id && */}
-              {console.log(matchid)}
+              {/* {console.log(matchid)} */}
               {/* {"A"==="A" ?():(
   
 )} */}
               {/* for displaying the information about the particular class
  only we first should have the data of that class only 
  . We cannot make selection inside the map method by using double and operator. */}
-              {classset.map((data) => (
+              {students.map((data) => (
+                // {console.log("sdfsdf")}
                 <tr key={data._id} className='contents'>
                   <td>{i++}</td>
-                  <td>{data._id}</td>
+                  {/* <td>{data._id}</td> */}
                   <td>
                     <img style={{ height: '50px' }} src={data.image} alt='' />
                   </td>
+                  {/* {console.log(data.class===matchid} */}
                   <td>{data.student_name}</td>
                   <td>{data.class}</td>
                   <td>{data.roll_no}</td>
