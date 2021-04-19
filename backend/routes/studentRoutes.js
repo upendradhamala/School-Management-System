@@ -21,7 +21,7 @@ router.get(
   asyncHandler(async (req, res) => {
     //   const students = classes.find((i) => i._id === req.params.id)
     const students = await Student.find({ class: req.params.id })
-    if (students) {
+    if (students.length > 0) {
       console.log(students)
 
       res.json(students)
