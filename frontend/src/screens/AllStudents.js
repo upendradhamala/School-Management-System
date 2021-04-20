@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { listStudents } from '../actions/studentActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const AllStudents = ({ match }) => {
   const dispatch = useDispatch()
@@ -17,6 +19,7 @@ const AllStudents = ({ match }) => {
     e.preventDefault()
     console.log('clicked')
   }
+  // const loading1=true
   // const students = []
   return (
     <div className='container3'>
@@ -28,9 +31,9 @@ const AllStudents = ({ match }) => {
 
         <div className='table-layout'>
           {loading ? (
-            <h1>Loading ....</h1>
+            <Loader />
           ) : error ? (
-            <h3>{error}</h3>
+            <Message variant='danger' message={error} />
           ) : (
             <table>
               <thead>
