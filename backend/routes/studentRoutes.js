@@ -37,10 +37,8 @@ router.get(
       roll_no: req.params.roll_no,
     })
 
-    if (student.length > 0) {
-      res.json(student)
-
-      // res.json(req.params.name + req.params.class + req.params.roll_no)
+    if (student[0]) {
+      res.json(student[0])
     } else {
       res.status(404)
       res.json({ message: 'No student found with the given information.' })

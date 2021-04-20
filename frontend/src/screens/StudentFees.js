@@ -85,7 +85,7 @@ const StudentFees = () => {
               <div className='form-inner'>
                 <div className='form-control'>
                   <label for='name'>Student Name</label>
-                  <input type='text' value={name} />
+                  <input type='text' value={student.student_name} />
                 </div>
                 {/* <div className='form-control'>
             <label for='name'>Full Name</label>
@@ -93,7 +93,7 @@ const StudentFees = () => {
           </div>{' '} */}
                 <div className='form-control'>
                   <label for='name'>Class</label>
-                  <select id='class' value={classname}>
+                  <select id='class' value={student.class}>
                     <option value=''>Select</option>
 
                     <option value='Nursery'>Nursery</option>
@@ -113,7 +113,7 @@ const StudentFees = () => {
                 </div>{' '}
                 <div className='form-control'>
                   <label for='name'>Roll No</label>
-                  <input type='number' value={rollno} />
+                  <input type='number' value={student.roll_no} />
                 </div>{' '}
                 <div className='form-control'>
                   <label for='name'>Monthly Fees</label>
