@@ -1,15 +1,16 @@
 .container1{
-    height:160vh;
+    /* height:190vh; */
 
-    background: url("student.jpg");
+    /* background: url("student.jpg"); */
     padding:10px;
     /* overflow-y: hidden; */
     /* display: grid; */
     /* place-content: center; */
     /* place-items: center; */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover;
+    /* background-position: center; /* Center the image */
+    /* background-repeat: no-repeat; /* Do not repeat the image */
+    /* background-size: cover; */ 
+    /* padding-bottom: 30px; */
 }
 .outer-layout{
     /* max-height:650px; */
@@ -17,7 +18,10 @@
     background: rgb(99, 154, 206);
     margin: auto;
     padding:10px;
+    /* border: 3px solid red;
+    margin-bottom: 100px !important; */
     border-radius: 7px;
+  
 }
 .outer-layout h1{
     text-align: center;
@@ -31,12 +35,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap:5px;
+    /* margin-bottom: 10px; */
     /* border:2px solid red; */
 
 
 }
 form{
 padding:3px;
+/* border: 3px solid red;
+margin-bottom: 100px; */
 }
 .form-control{
     /* border:2px solid red; */
@@ -110,6 +117,22 @@ font-size: 15px;
 @media only screen and (max-width: 700px) {
     .outer-layout .form-inner{
         grid-template-columns: 1fr;
+    }
+    .search-form form {
+        /* display:grid; */
+        flex-direction: column;
+        
+         /* /* grid-template-columns: 1fr 1fr ;  */
+        /* grid-template-rows: 1fr  1fr 1fr ;
+        /* display: block !important; */
+        /* background: red; */ 
+    }
+    .btn-search{
+        /* display: block !important; */
+    }
+    .first-input{
+        /* display:grid; */
+        /* display: block; */
     }
 }
 
@@ -251,3 +274,67 @@ th, td {
   td:nth-child(11)  {
     text-align: center;
    }
+
+   /* student fees section
+    */
+    .search-form{
+        max-width: 1000px;
+        margin: auto;
+        margin-top: 15px;
+        /* margin:10px; */
+        margin-bottom: 15px;
+        padding:15px;
+
+
+    }
+    .search-form h4 {
+        text-align: center;
+        padding:5px;
+        color:white;
+        margin-bottom: 10px;
+        font-size: 20px;
+        background: rgb(136, 84, 84);
+
+    }
+    .search-form form{
+        /* border:3px solid red; */
+        display:flex;
+        justify-content: center;
+        /* flex-direction: row; */
+        /* max-width: 500px; */
+        /* grid-template-columns: 1fr 0.5fr 0.3fr 0.4fr; */ 
+    }
+    .search-form form input{
+        /* border:2px solid red; */
+        padding:10px;
+        font-size: 15px;
+        /* max-width: 400px; */
+        /* border:none; */
+        outline:none;
+
+
+    }
+     /* .search-form form select{
+
+     } */
+    .search-form form select{
+        /* border:3px solid red; */
+        outline:none;
+        padding:10px;
+        font-size: 15px;
+        /* padding:40px; */
+    }
+
+    .btn-search{
+        background: rgb(83, 158, 139);
+        color:white;
+        padding: 10px;
+        border:none;
+        text-transform: uppercase;
+        outline: none;
+        cursor: pointer;
+        
+    }
+    .btn-search:hover{
+        opacity: 0.8;
+    }

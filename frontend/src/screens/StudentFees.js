@@ -1,12 +1,43 @@
 import React from 'react'
 import './Student.css'
 const StudentFees = () => {
+  const formSubmit = (e) => {
+    e.preventDefault()
+    console.log('Search form submitted.')
+  }
   const submitHandler = (e) => {
     e.preventDefault()
     console.log('Form submitted.')
   }
   return (
-    <div class='container1'>
+    <div className='container1'>
+      <div className='search-form'>
+        <h4>Search for Student to pay fees</h4>
+
+        <form onSubmit={formSubmit}>
+          <input className='first-input' type='text' />
+          <select id='class'>
+            <option value=''>Select Class</option>
+            <option value='Nursery'>Nursery</option>
+            <option value='LKG'>LKG</option>
+            <option value='UKG'>UKG</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+          </select>
+          <input type='number' />
+          <button className='btn-search' type='submit'>
+            Search
+          </button>
+        </form>
+      </div>
       <div className='outer-layout'>
         <h1>Student Fees Section</h1>
         <form onSubmit={submitHandler}>
@@ -28,7 +59,6 @@ const StudentFees = () => {
                 <option value='LKG'>LKG</option>
                 <option value='UKG'>UKG</option>
                 <option value='1'>1</option>
-
                 <option value='2'>2</option>
                 <option value='3'>3</option>
                 <option value='4'>4</option>
