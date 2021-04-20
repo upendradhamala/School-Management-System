@@ -20,7 +20,7 @@ const Main = () => {
     }
     fetchItems()
   }, [])
-  
+
   return (
     <main>
       <div className='main__container'>
