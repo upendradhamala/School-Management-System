@@ -1,7 +1,8 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
-const router = express.Router()
 import Student from '../models/studentModel.js'
+import capitalize from '../config/capitalize.js'
+const router = express.Router()
 
 router.get(
   '/',
@@ -29,14 +30,14 @@ router.get(
 router.get(
   '/search/:name/:class/:roll_no',
   asyncHandler(async (req, res) => {
-    console.log(req.params.name, req.params.class, req.params.roll_no)
+    // console.log(req.params.name, req.params.class, req.params.roll_no)
     const student = await Student.find({
-      student_name: req.params.name,
-      class: req.params.class,
+      student_name: capitalize(req.params.name),
+      class: capitalize(req.params.class),
       roll_no: req.params.roll_no,
     })
+
     if (student.length > 0) {
-      // console.log(student)
       res.json(student)
 
       // res.json(req.params.name + req.params.class + req.params.roll_no)
