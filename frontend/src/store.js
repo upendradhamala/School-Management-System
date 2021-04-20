@@ -4,11 +4,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { studentListReducer } from './reducers/studentReducers'
-import { studentClassListReducer } from './reducers/studentReducers'
+import {
+  studentClassListReducer,
+  studentSearchReducer,
+} from './reducers/studentReducers'
 
 const reducer = combineReducers({
   studentList: studentListReducer,
-  studentClassList:studentClassListReducer
+  studentClassList: studentClassListReducer,
+  studentSearch: studentSearchReducer,
 })
 const initialState = {}
 const middleware = [thunk]

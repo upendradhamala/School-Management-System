@@ -30,7 +30,7 @@ router.get(
 router.get(
   '/search/:name/:class/:roll_no',
   asyncHandler(async (req, res) => {
-    // console.log(req.params.name, req.params.class, req.params.roll_no)
+    console.log(req.params.name, req.params.class, req.params.roll_no)
     const student = await Student.find({
       student_name: capitalize(req.params.name),
       class: capitalize(req.params.class),
@@ -42,9 +42,8 @@ router.get(
 
       // res.json(req.params.name + req.params.class + req.params.roll_no)
     } else {
-      res
-        .status(404)
-        .json({ message: 'No student found with the given information.' })
+      res.status(404)
+      res.json({ message: 'No student found with the given information.' })
     }
   })
 )

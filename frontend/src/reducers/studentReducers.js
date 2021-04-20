@@ -6,6 +6,9 @@ import {
   STUDENT_CLASS_LIST_REQUEST,
   STUDENT_CLASS_LIST_SUCCESS,
   STUDENT_CLASS_LIST_FAIL,
+  STUDENT_SEARCH_REQUEST,
+  STUDENT_SEARCH_SUCCESS,
+  STUDENT_SEARCH_FAIL,
 } from '../constants/studentConstants'
 //following displays list of all students
 export const studentListReducer = (state = { students: [] }, action) => {
@@ -28,6 +31,20 @@ export const studentClassListReducer = (state = { students: [] }, action) => {
     case STUDENT_CLASS_LIST_SUCCESS:
       return { loading: false, students: action.payload }
     case STUDENT_CLASS_LIST_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//following is for searching the students for fees submission
+export const studentSearchReducer = (state = {}, action) => {
+  switch (action.type) {
+    case STUDENT_SEARCH_REQUEST:
+      return { loading: true, student: {} }
+    case STUDENT_SEARCH_SUCCESS:
+      return { loading: false, student: action.payload }
+    case STUDENT_SEARCH_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state
