@@ -8,7 +8,7 @@ const AllStudents = ({ match }) => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, students, error } = studentList
-  const matchid = match.params.id
+  // const matchid = match.params.id
   useEffect(() => {
     dispatch(listStudents())
   }, [dispatch])
@@ -55,7 +55,7 @@ const AllStudents = ({ match }) => {
               </thead>
               <tbody>
                 {/* {match.params.id===data.id && */}
-                {console.log(matchid)}
+                {/* {console.log(matchid)} */}
                 {/* {"A"==="A" ?():(
 
 )} */}

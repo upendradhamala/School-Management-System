@@ -2,7 +2,7 @@
 
 /*  styling scrollbars  */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
   height: 6px;
 }
 
@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background:#635258;
+  background:rgb(151, 145, 145);
   border-radius: 10px;
 }
 

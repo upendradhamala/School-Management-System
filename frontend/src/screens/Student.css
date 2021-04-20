@@ -216,16 +216,17 @@ font-size: 15px;
 }
 
 table{
-    border:1px solid rgb(5, 5, 5);
+    border:1px solid rgb(127, 92, 209);
     border-collapse: collapse;
 }
 /* tr{
     border:2px solid black;
 } */
 th, td {
-    border:2px solid rgb(8, 8, 8);
+    border:1px solid rgb(192, 140, 140);
 
     padding: 5px;
+    color:white;
     /* text-align: center; */
 
   }
@@ -241,7 +242,7 @@ th, td {
   }
   .container3 .outer{
       max-width: 90%;
-      background: rgb(190, 194, 187);
+      background: rgb(26, 54, 5);
   }
 
   td:nth-child(12)  {

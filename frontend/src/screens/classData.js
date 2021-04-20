@@ -1,7 +1,7 @@
 const Classes = [
   {
     _id: 1,
-    classname: 'Nursey',
+    classname: 'Nursery',
   },
   {
     _id: 2,
