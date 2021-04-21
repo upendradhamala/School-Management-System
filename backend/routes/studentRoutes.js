@@ -45,4 +45,28 @@ router.get(
     }
   })
 )
+
+//following route is for registering the students 
+
+
+
+
+//following route is for paying the fees of students
+
+
+
+
+
+
+//following route is for attendance of students
+
+
+
+
+
+//following route is for admit card of the student 
+
+
+
+
 export default router

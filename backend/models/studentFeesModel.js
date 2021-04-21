@@ -18,6 +18,15 @@ const studentFeesSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    month_name: {
+      type: String,
+      required: true,
+    },
+    year: {
+      type: String,
+      required: true,
+    },
+
     monthly_fees: {
       type: Number,
       required: true,

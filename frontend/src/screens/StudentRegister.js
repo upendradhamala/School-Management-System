@@ -6,40 +6,36 @@ const StudentRegister = () => {
     console.log('Form submitted.')
   }
   return (
-    <div className='container1'>
+    <div className='container1' style={{ marginTop: '10px' }}>
       <div className='outer-layout'>
         <h1>Register Student</h1>
         <form onSubmit={submitHandler}>
           <div className='form-inner'>
             <div className='form-control'>
               <label htmlFor='name'>Full Name</label>
-              <input type='text' />
+              <input type='text' required />
             </div>
-            {/* <div className='form-control'>
-            <label htmlFor='name'>Full Name</label>
-            <input type='text' />
-          </div>{' '} */}
             <div className='form-control'>
               <label htmlFor='name'>Email</label>
-              <input type='email' />
+              <input type='email' required />
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Address</label>
-              <input type='text' />
+              <input type='text' required />
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Gender</label>
-              <select>
+              <select required>
                 <option value=''>Select</option>
                 <option value='male'>Male</option>
 
                 <option value='female'>Female</option>
-                <option value='LKG'>Others</option>
+                <option value='others'>Others</option>
               </select>
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Class</label>
-              <select id='class'>
+              <select id='class' required>
                 <option value='Nursery'>Select</option>
 
                 <option value='Nursery'>Nursery</option>
@@ -60,24 +56,28 @@ const StudentRegister = () => {
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Phone Number</label>
-              <input type='text' />
+              <input type='text' required />
             </div>{' '}
             <div className='form-control'>
               <label htmlFor='name'>Parent's Name</label>
-              <input type='text' />
+              <input type='text' required />
             </div>
-            <div className='form-control'>
+            {/* <div className='form-control'>
               <label htmlFor='name'>Joining Date</label>
               <input type='date' />
-            </div>{' '}
+            </div>{' '} */}
             <div className='form-control'>
               <label htmlFor='name'>Age</label>
-              <input type='text' />
+              <input type='text' required />
+            </div>
+            <div className='form-control'>
+              <label htmlFor='registration-fees'>Registration Fees</label>
+              <input type='number' required />
             </div>
             <div className='form-control'>
               <label htmlFor='name'>
                 Upload Picture
-                <input className='avatar' type='file' size='60' />
+                <input className='custom-file-input' type='file' required />
               </label>
             </div>
             {/* <div className="register-btn"> */}

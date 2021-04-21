@@ -76,21 +76,31 @@ padding:10px;
     border:none;
     
 }
-.avatar{
-    /* padding :8px 8px  8px 5px;
-    width:100%;
-    outline:none; */
-    /* font-size: 15px;
-    border-radius: 7px;
-    border-radius: 2px solid red;
-    border:none; */
-    /* width:100%; */
-}
-/* .register-btn{
-
-border: 2px solid red;
-font-size: 15px;
-} */
+/* the following is for styling the file input  */
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Select a photo';
+    display: inline-block;
+    background: rgb(15, 5, 5);
+    border: 1px solid rgb(2, 1, 1);
+    border-radius: 5px;
+    padding: 10px 10px;
+    outline: none;
+    color:white;
+    white-space: nowrap;
+    cursor: pointer;
+    /* text-shadow: 1px 1px #fff; */
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
 .btn-register{
     padding:10px;
     width:50%;

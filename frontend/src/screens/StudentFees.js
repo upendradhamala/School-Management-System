@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
+import NepaliDate from 'nepali-date-converter'
+
 import Loader from '../components/Loader'
 // import axios from 'axios'
 import { studentSearch } from '../actions/studentActions'
@@ -114,6 +116,33 @@ const StudentFees = () => {
                 <div className='form-control'>
                   <label for='name'>Roll No</label>
                   <input type='number' value={student.roll_no} />
+                </div>{' '}
+                <div className='form-control'>
+                  <label for='year'>Year</label>
+                  <input
+                    type='string'
+                    value={new NepaliDate().format('YYYY')}
+                  />
+                </div>{' '}
+                <div className='form-control'>
+                  <label for='name'>Month</label>
+                  <select id='class'>
+                    <option value=''>Select Month</option>
+
+                    <option value='Baisakh'>Baisakh</option>
+                    <option value='Jestha'>Jestha</option>
+                    <option value='Ashadh'>Ashadh</option>
+                    <option value='Shrawan'>Shrawan</option>
+                    <option value='Bhadra'>Bhadra</option>
+                    <option value='Ashoj'>Ashoj</option>
+                    <option value='Kartik'>Kartik</option>
+                    <option value='Mangsir'>Mangsir</option>
+                    <option value='Poush'>Poush</option>
+                    <option value='Magh'>Magh</option>
+                    <option value='Falgun'>Falgun</option>
+                    <option value='Chaitra'>Chaitra</option>
+                    {/* <option value='Ten'>Ten</option> */}
+                  </select>
                 </div>{' '}
                 <div className='form-control'>
                   <label for='name'>Monthly Fees</label>

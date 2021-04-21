@@ -7,12 +7,14 @@ import connectDB from './config/db.js'
 import items from './data/Data.js'
 // import classes from './data/ClassData.js'
 import studentRoutes from './routes/studentRoutes.js'
+import adminRoutes from './routes/adminRoutes.js'
 // const items = require('./data/Data')
 // const classes = require('./data/ClassData')
 // d0t
 dotenv.config()
 connectDB()
 const app = express()
+app.use(express.json())
 // app.use((req,res,next)=>{
 //   consolle
 // })
@@ -27,6 +29,7 @@ app.get('/dashboard', (req, res) => {
 })
 
 app.use('/api/students', studentRoutes)
+app.use('/api/login', adminRoutes)
 //the following router is for displaying the class labels
 
 //following route is for displaying the list of students
