@@ -28,6 +28,9 @@ router.post(
 )
 
 //get logged in user's profile
+//may be this route is for fetching information from the token
+//stored in the local storge in our browser which is chrome in my case
+
 router.get(
   '/user',
   protect,

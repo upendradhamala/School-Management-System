@@ -17,10 +17,10 @@
 
 .layout
 {
-    padding: 20px;
+    padding: 40px;
     margin:auto;
-    max-width: 340px;
-    height:400px;
+    max-width: 400px;
+    /* height:400px; */
     margin-top: 100px;
     border-radius: 8px;
     background: rgb(22, 105, 101);

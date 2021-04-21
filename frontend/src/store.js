@@ -4,6 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { studentListReducer } from './reducers/studentReducers'
+import { userLoginReducer } from './reducers/userReducers'
 import {
   studentClassListReducer,
   studentSearchReducer,
@@ -13,8 +14,16 @@ const reducer = combineReducers({
   studentList: studentListReducer,
   studentClassList: studentClassListReducer,
   studentSearch: studentSearchReducer,
+  userLogin: userLoginReducer,
 })
-const initialState = {}
+const userInfoFromStorage = localStorage.getItem('userCred')
+  ? JSON.parse(localStorage.getItem('userCred'))
+  : null
+
+//remember the above should be null
+const initialState = {
+  userLogin: { userCred: userInfoFromStorage },
+}
 const middleware = [thunk]
 const store = createStore(
   reducer,
