@@ -1,6 +1,9 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
 import Admin from '../models/adminModel.js'
+import generateToken from '../utils/generateToken.js'
+import protect from '../middleware/authMiddleware.js'
+
 const router = express.Router()
 
 router.post(
@@ -15,11 +18,31 @@ router.post(
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        token: null,
+        token: generateToken(user._id),
       })
     } else {
       res.status(401)
       throw new Error('Invalid email or password')
+    }
+  })
+)
+
+//get logged in user's profile
+router.get(
+  '/user',
+  protect,
+  asyncHandler(async (req, res) => {
+    const user = await Admin.findById(req.user._id)
+    if (user) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      })
+    } else {
+      res.status(404)
+      throw new Error('User not found')
     }
   })
 )
