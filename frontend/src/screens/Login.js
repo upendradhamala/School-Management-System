@@ -5,9 +5,12 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import './Login.css'
 const Login = ({ history, location }) => {
+  console.log('value of history', history)
+  console.log('value of location', location)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const redirect = location.search ? location.search.split('=')[1] : '/'
+  console.log('value of redirect is', redirect)
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userCred } = userLogin

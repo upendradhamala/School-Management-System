@@ -20,3 +20,6 @@ export const userLoginReducer = (state = {}, action) => {
       return state
   }
 }
+
+
+//THIS IS FOR LOGGING OUT

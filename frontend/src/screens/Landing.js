@@ -1,23 +1,31 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 import Header from '../components/Header'
-// import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar'
 import Main from '../components/Main'
 import './Landing.css'
-const Landing = () => {
+
+const Landing = ({ history }) => {
   const [sidebarOpen, setsidebarOpen] = useState(false)
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userCred } = userLogin
   const openSidebar = () => {
     setsidebarOpen(true)
   }
   const closeSidebar = () => {
     setsidebarOpen(false)
   }
+  useEffect(() => {
+    if (!userCred) {
+      history.push('/login')
+    }
+  }, [userCred, history])
   return (
     <div className='containers'>
       <Header sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
       <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
       <Main />
-      {/* <Footer/> */}
     </div>
   )
 }

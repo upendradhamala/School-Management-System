@@ -1,7 +1,16 @@
 import './Sidebar.css'
+import { useDispatch } from 'react-redux'
+// import USER_LOGOUT from '../constants/userConstants'
 // import logo from "../../Linkssets/logo.png";
+import { logout } from '../actions/userActions'
 import { Link } from 'react-router-dom'
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
+  const dispatch = useDispatch()
+
+  const logoutHandler = () => {
+    console.log('hello')
+    dispatch(logout())
+  }
   return (
     <div className={sidebarOpen ? 'sidebar_responsive' : ''} id='sidebar'>
       <div className='sidebar__title'>
@@ -101,7 +110,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
         </div>
         <div className='sidebar__logout'>
           <i className='fa fa-power-off'></i>
-          <Link className='linked' to='/login'>
+          <Link className='linked' onClick={logoutHandler} to='/login'>
             Log out
           </Link>
         </div>

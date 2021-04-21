@@ -34,7 +34,11 @@
   .loggedinas{
     font-size: 15px;
     color:white;
+    background: rgb(0, 0, 0);
+    padding: 5px;
+    text-align: center;
   }
+  
   .nav_icon > i {
     font-size: 26px;
     color: #a5aaad;
@@ -92,10 +96,15 @@
     }
   }
 
-  @media only screen and (max-width: 580px) {
+  /* @media only screen and (max-width: 580px) {
   
     .navbar p{
       display: none;
     }
+  } */
+  .loggedinas p{
+    font-size: 15px;
+    /* border:3px solid black; */
+    /* border-radius: 50px; */
+
   }
-  

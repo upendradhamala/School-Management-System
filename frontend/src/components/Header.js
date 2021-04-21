@@ -1,7 +1,10 @@
 import './Header.css'
 // import avatar from '../../assets/avatar.svg'
+import { useSelector } from 'react-redux'
 
 const Navbar = ({ sidebarOpen, openSidebar }) => {
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userCred } = userLogin
   return (
     <nav className='navbar'>
       <div className='nav_icon' onClick={() => openSidebar()}>
@@ -17,7 +20,9 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
       </div>
        */}
       <div className='navbar__right'>
-        <span className="loggedinas">Logged in as:Admin</span>
+        <span className='loggedinas'>
+          <p>{userCred.name}</p>
+        </span>
       </div>
     </nav>
   )
