@@ -9,11 +9,23 @@ const Login = ({ history, location }) => {
   console.log('value of location', location)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [toggle, setToggle] = useState(false)
   const redirect = location.search ? location.search.split('=')[1] : '/'
   console.log('value of redirect is', redirect)
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userCred } = userLogin
+  const toggleVisibility = () => {
+    // console.log('clicked')
+    setToggle(!toggle)
+    // if (password.type === 'password') {
+    //   password.type = 'text'
+    // } else {
+    //   password.type = 'password'
+    // }
+  }
+  const hideShow = () => {}
+
   useEffect(() => {
     if (userCred) {
       console.log(userCred)
@@ -44,14 +56,29 @@ const Login = ({ history, location }) => {
               placeholder='Email'
               required
             />
-            <input
-              className='form-field'
-              type='text'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Password'
-              required
-            />
+            <div className='password-eye'>
+              <input
+                className='form-field '
+                type={toggle ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Password'
+                required
+              />
+              {toggle ? (
+                <i
+                  id='eye'
+                  className='fas fa-eye'
+                  onClick={toggleVisibility}
+                ></i>
+              ) : (
+                <i
+                  className='fas fa-eye-slash'
+                  id='eye'
+                  onClick={toggleVisibility}
+                ></i>
+              )}
+            </div>
             <div className='remember-me'>
               <input type='checkbox' id='check' />
               <label htmlFor='check'>Remember me</label>

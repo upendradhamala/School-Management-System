@@ -66,3 +66,27 @@ outline: none;
     text-transform: uppercase;
     
 }
+.password-eye {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr ;
+    /* gap:-5px; */
+}
+.password-eye input{
+    border:none;
+    /* border:2px solid red; */
+    /* margin-right: 4px; */
+}
+/* .password-eye input[type=text]{
+    font-size: 20px;
+    color:red;
+} */
+#eye{
+    /* border:2px solid red; */
+    margin:auto;
+    background: white;
+    padding:10px;
+    margin-top: 10px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+}
