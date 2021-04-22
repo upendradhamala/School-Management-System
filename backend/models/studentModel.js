@@ -1,8 +1,13 @@
 import mongoose from 'mongoose'
 const studentSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: 'Admin',
+    // },
+    registered_by: {
+      type: String,
       required: true,
       ref: 'Admin',
     },
@@ -10,7 +15,7 @@ const studentSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    class: {
+    classname: {
       type: String,
       required: true,
     },
@@ -38,11 +43,15 @@ const studentSchema = mongoose.Schema(
       type: Number,
     },
     age: {
-      type: Number,
+      type: String,
       required: true,
     },
     email: {
       type: String,
+      required: true,
+    },
+    registration_fees: {
+      type: Number,
       required: true,
     },
     image: {

@@ -9,6 +9,9 @@ import {
   STUDENT_SEARCH_REQUEST,
   STUDENT_SEARCH_SUCCESS,
   STUDENT_SEARCH_FAIL,
+  STUDENT_REGISTER_REQUEST,
+  STUDENT_REGISTER_SUCCESS,
+  STUDENT_REGISTER_FAIL,
 } from '../constants/studentConstants'
 //following displays list of all students
 export const studentListReducer = (state = { students: [] }, action) => {
@@ -45,6 +48,21 @@ export const studentSearchReducer = (state = {}, action) => {
     case STUDENT_SEARCH_SUCCESS:
       return { loading: false, student: action.payload }
     case STUDENT_SEARCH_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+//FOLLOWING IS FOR REGISTERING THE STUDENT
+
+export const studentRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case STUDENT_REGISTER_REQUEST:
+      return { loading: true }
+    case STUDENT_REGISTER_SUCCESS:
+      return { loading: false, success: action.payload }
+    case STUDENT_REGISTER_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

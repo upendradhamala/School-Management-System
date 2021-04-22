@@ -13,12 +13,11 @@ const StudentDetails = ({ match }) => {
   const { loading, students, error } = studentClassList
 
   useEffect(() => {
-   
     dispatch(classlistStudent(matchid))
   }, [dispatch, matchid])
-  
+
   var i = 1
- 
+
   const searchSubmit = (e) => {
     e.preventDefault()
     console.log('clicked')
@@ -54,8 +53,6 @@ const StudentDetails = ({ match }) => {
                 </tr>
               </thead>
               <tbody>
-             
-               
                 {students.map((data) => (
                   <tr key={data._id} className='contents'>
                     <td>{i++}</td>
@@ -63,7 +60,7 @@ const StudentDetails = ({ match }) => {
                       <img style={{ height: '50px' }} src={data.image} alt='' />
                     </td>
                     <td>{data.student_name}</td>
-                    <td>{data.class}</td>
+                    <td>{data.classname}</td>
                     <td>{data.roll_no}</td>
                     <td>{data.address}</td>
                     <td>{data.parents_name}</td>

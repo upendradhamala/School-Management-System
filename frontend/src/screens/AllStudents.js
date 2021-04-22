@@ -70,7 +70,7 @@ only we first should have the data of that class only
                       <img style={{ height: '50px' }} src={data.image} alt='' />
                     </td>
                     <td>{data.student_name}</td>
-                    <td>{data.class}</td>
+                    <td>{data.classname}</td>
                     <td>{data.roll_no}</td>
                     <td>{data.address}</td>
                     <td>{data.parents_name}</td>
