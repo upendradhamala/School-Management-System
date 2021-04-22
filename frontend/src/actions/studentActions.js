@@ -12,6 +12,9 @@ import {
   STUDENT_REGISTER_REQUEST,
   STUDENT_REGISTER_SUCCESS,
   STUDENT_REGISTER_FAIL,
+  STUDENT_DELETE_FAIL,
+  STUDENT_DELETE_SUCCESS,
+  STUDENT_DELETE_REQUEST,
 } from '../constants/studentConstants'
 
 //the below uses function within a function which is privileged by redux-thunk
@@ -142,6 +145,29 @@ export const Register = (
   } catch (error) {
     dispatch({
       type: STUDENT_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//FOLLOWING IS FOR DELETING THE STUDENT
+
+export const deleteStudent = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: STUDENT_DELETE_REQUEST,
+    })
+    const { data } = await axios.delete(`/api/students/delete/${id}`)
+    dispatch({
+      type: STUDENT_DELETE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: STUDENT_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

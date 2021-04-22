@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-
+import { deleteStudent } from '../actions/studentActions'
 import { classlistStudent } from '../actions/studentActions'
 const StudentDetails = ({ match }) => {
   const matchid = match.params.id
@@ -11,13 +11,22 @@ const StudentDetails = ({ match }) => {
   const dispatch = useDispatch()
   const studentClassList = useSelector((state) => state.studentClassList)
   const { loading, students, error } = studentClassList
-
+  const studentDelete = useSelector((state) => state.studentDelete)
+  const {
+    loading: loadingDelete,
+    success: successDelete,
+    error: errorDelete,
+  } = studentDelete
   useEffect(() => {
     dispatch(classlistStudent(matchid))
-  }, [dispatch, matchid])
+  }, [dispatch, matchid, successDelete])
 
   var i = 1
-
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteStudent(id))
+    }
+  }
   const searchSubmit = (e) => {
     e.preventDefault()
     console.log('clicked')
@@ -82,8 +91,10 @@ const StudentDetails = ({ match }) => {
                         style={{
                           padding: '8px',
                           color: 'red',
+                          cursor:'pointer',
                           fontSize: '25px',
                         }}
+                        onClick={() => deleteHandler(data._id)}
                         className='fas fa-trash'
                       ></i>
                     </td>

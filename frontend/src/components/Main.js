@@ -4,7 +4,6 @@ import axios from 'axios'
 import './Main.css'
 import DashboardCard from './DashboardCard'
 import Footer from './Footer'
-// import items from '../Data'
 const Main = () => {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState()
@@ -46,7 +45,7 @@ const Main = () => {
           </div>
         )}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   )
 }

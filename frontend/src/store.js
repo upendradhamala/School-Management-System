@@ -9,6 +9,7 @@ import {
   studentClassListReducer,
   studentSearchReducer,
   studentRegisterReducer,
+  studentDeleteReducer,
 } from './reducers/studentReducers'
 
 const reducer = combineReducers({
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   studentSearch: studentSearchReducer,
   userLogin: userLoginReducer,
   studentRegister: studentRegisterReducer,
+  studentDelete: studentDeleteReducer,
 })
 const userInfoFromStorage = localStorage.getItem('userCred')
   ? JSON.parse(localStorage.getItem('userCred'))

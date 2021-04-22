@@ -12,10 +12,10 @@ const StudentDetails = () => {
   return (
     <div className='container2'>
       <div className='outer'>
-        <input type='text' placeholder='Search for student...' />
+        {/* <input type='text' placeholder='Search for student...' />
         <span className='search-icon' onClick={searchSubmit}>
           <i className='fas fa-search'></i>
-        </span>
+        </span> */}
         <h3>Browse By Class</h3>
         <div className='classes'>
           {Classes.map((classinfo) => (

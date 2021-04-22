@@ -3,16 +3,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listStudents } from '../actions/studentActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import { deleteStudent } from '../actions/studentActions'
 
 const AllStudents = ({ match }) => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, students, error } = studentList
+  const studentDelete = useSelector((state) => state.studentDelete)
+  const {
+    loading: loadingDelete,
+    success: successDelete,
+    error: errorDelete,
+  } = studentDelete
   // const matchid = match.params.id
   useEffect(() => {
     dispatch(listStudents())
-  }, [dispatch])
-
+  }, [dispatch, successDelete])
+  const deleteHandler = (id) => {
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteStudent(id))
+    }
+  }
   var i = 1
 
   const searchSubmit = (e) => {
@@ -93,7 +104,9 @@ only we first should have the data of that class only
                           padding: '8px',
                           color: 'red',
                           fontSize: '25px',
+                          cursor: 'pointer',
                         }}
+                        onClick={() => deleteHandler(data._id)}
                         className='fas fa-trash'
                       ></i>
                     </td>

@@ -47,6 +47,7 @@ const StudentRegister = ({ history }) => {
         console.error(err)
       })
     setUploading(false)
+    console.log('url is', image)
   }
   const submitHandler = (e) => {
     e.preventDefault()
@@ -66,7 +67,7 @@ const StudentRegister = ({ history }) => {
     )
     setName('')
     setAddress('')
-    setImage('')
+    // setImage('')
   }
   const userLogin = useSelector((state) => state.userLogin)
   // const userLogin = useSelector((state) => state.userLogin)
@@ -199,7 +200,6 @@ const StudentRegister = ({ history }) => {
                 Upload Picture
                 <input
                   className='custom-file-input'
-                  // value={image}
                   onChange={uploadFileHandler}
                   type='file'
                   required
