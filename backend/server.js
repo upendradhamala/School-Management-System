@@ -30,6 +30,13 @@ app.get('/dashboard', (req, res) => {
 
 app.use('/api/students', studentRoutes)
 app.use('/api/login', adminRoutes)
+
+app.get('/api/config/cloudinary', (req, res) => {
+  res.send(process.env.CLOUDINARY_URL)
+})
+app.get('/api/config/cloudinarypreset', (req, res) => {
+  res.send(process.env.CLOUDINARY_UPLOAD_PRESET)
+})
 //the following router is for displaying the class labels
 
 //following route is for displaying the list of students

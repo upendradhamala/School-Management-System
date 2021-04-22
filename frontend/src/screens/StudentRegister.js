@@ -1,12 +1,15 @@
+import axios from 'axios'
+
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Register } from '../actions/studentActions'
-
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import './Student.css'
 const StudentRegister = ({ history }) => {
   const dispatch = useDispatch()
+  const [uploading, setUploading] = useState(false)
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
@@ -17,6 +20,34 @@ const StudentRegister = ({ history }) => {
   const [age, setAge] = useState('')
   const [registrationfees, setRegistraionfees] = useState('')
   const [image, setImage] = useState('')
+  const uploadFileHandler = async (e) => {
+    const { data: CLOUDINARY_URL } = await axios.get('/api/config/cloudinary')
+
+    const { data: CLOUDINARY_UPLOAD_PRESET } = await axios.get(
+      '/api/config/cloudinarypreset'
+    )
+
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    setUploading(true)
+    await axios({
+      url: CLOUDINARY_URL,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      data: formData,
+    })
+      .then(function (res) {
+        setImage(res.data.url)
+      })
+      .catch(function (err) {
+        console.error(err)
+      })
+    setUploading(false)
+  }
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
@@ -35,6 +66,7 @@ const StudentRegister = ({ history }) => {
     )
     setName('')
     setAddress('')
+    setImage('')
   }
   const userLogin = useSelector((state) => state.userLogin)
   // const userLogin = useSelector((state) => state.userLogin)
@@ -167,12 +199,21 @@ const StudentRegister = ({ history }) => {
                 Upload Picture
                 <input
                   className='custom-file-input'
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  // value={image}
+                  onChange={uploadFileHandler}
                   type='file'
                   required
                 />
               </label>
+              {uploading && <Loader />}
+              {image && (
+                <img
+                  className='mt-2'
+                  src={image}
+                  style={{ height: '100px' }}
+                  alt='image1'
+                />
+              )}
             </div>
             {/* <div className="register-btn"> */}
             {/* </div> */}
