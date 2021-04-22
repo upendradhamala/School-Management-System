@@ -10,6 +10,10 @@ const adminSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -25,7 +29,7 @@ const adminSchema = mongoose.Schema(
   }
 )
 adminSchema.methods.matchPassword = async function (enteredPassword) {
-  console.log("reached here")
+  console.log('reached here')
   return await bcrypt.compare(enteredPassword, this.password)
 }
 const Admin = mongoose.model('Admin', adminSchema)

@@ -21,7 +21,8 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
        */}
       <div className='navbar__right'>
         <span className='loggedinas'>
-          <p>{userCred.name}</p>
+          <img src={userCred && userCred.image} alt='sdf' />
+          {/* <p>{userCred && userCred.name}</p> */}
         </span>
       </div>
     </nav>
