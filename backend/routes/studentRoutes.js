@@ -144,4 +144,33 @@ router.delete(
   })
 )
 
+//fee paying
+
+router.post(
+  '/fees/:id',
+  protect,
+  asyncHandler(async (req, res) => {
+    const {
+      student_name,
+      classname,
+      roll_no,
+      month_name,
+      year,
+      monthly_fees,
+      hostel_fees,
+      laboratory_fees,
+      computer_fees,
+      exam_fees,
+      miscellaneous,
+    } = req.body
+    const student = await Student.findById(req.params.id)
+    if (student) {
+      const accountant = req.user.name
+    } else {
+      res.status(404)
+      throw new Error('Student not found')
+    }
+  })
+)
+
 export default router

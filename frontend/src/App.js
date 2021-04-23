@@ -9,6 +9,7 @@ import StudentDetails from './screens/StudentDetails'
 import StudentDeepDetails from './screens/StudentDeepDetails'
 import StudentAttendance from './screens/StudentAttendance'
 import AllStudents from './screens/AllStudents'
+import StudentDeepAttendance from './screens/StudentDeepAttendance'
 const App = () => {
   return (
     <Router>
@@ -25,8 +26,13 @@ const App = () => {
             exact
           />
           <Route
-            path='/student_attendance/:class'
+            path='/student-attendance'
             component={StudentAttendance}
+            exact
+          />
+          <Route
+            path='/student-attendance/:class'
+            component={StudentDeepAttendance}
             exact
           />
           <Route path='/students' component={AllStudents} exact />

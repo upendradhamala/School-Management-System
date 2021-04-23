@@ -348,3 +348,51 @@ th, td {
     .btn-search:hover{
         opacity: 0.8;
     }
+.attendance-outer{
+    padding:10px;
+    background: rgb(196, 203, 211);
+    padding-bottom: 20px;
+}
+
+    /* FOR STUDENT ATTENDANCE */
+    .attendance-outer h1{
+        background: rgb(58, 47, 47);
+        color:white;
+        max-width: 800px;
+        margin: auto;
+    }
+
+
+.attendance-outer table {
+    border:none;
+    background: red;
+    /* padding:100px; */
+    /* max-width: 800px; */
+}
+.attendance-outer table thead{
+    border:none;
+    background: rgb(92, 85, 180);
+   
+} 
+.attendance{
+        padding:20px;
+        margin: 20px;
+        /* border:2px solid red; */
+    }
+.attendance td{
+        background: rgb(235, 227, 227);
+        /* border:none; */
+        padding:30px;
+        color:black;
+        margin:30px;
+    }
+ .present{
+        background: rgb(52, 184, 0) !important ;
+        /* color:red; */
+        text-transform: uppercase;
+    }
+ .absent{
+        background: red !important;
+        text-transform: uppercase;
+
+    }

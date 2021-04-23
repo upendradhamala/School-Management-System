@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const studentFeesSchema = mongoose.Schema(
   {
-    user: {
+    accountant: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'Admin',
@@ -10,7 +10,7 @@ const studentFeesSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    class: {
+    classname: {
       type: String,
       required: true,
     },
