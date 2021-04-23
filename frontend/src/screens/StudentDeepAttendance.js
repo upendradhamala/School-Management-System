@@ -2,27 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { classlistStudent } from '../actions/studentActions'
 import NepaliDate from 'nepali-date-converter'
-import Loader from '../components/Loader'
+// import Loader from '../components/Loader'
 import Message from '../components/Message'
 const StudentDeepAttendance = ({ match }) => {
   const matchid = match.params.class
   const [studentlist, setStudentlist] = useState([])
-  //   console.log(matchid)
   const [present, setPresent] = useState(false)
   const dispatch = useDispatch()
   const [clicked, setClicked] = useState(false)
   const studentClassList = useSelector((state) => state.studentClassList)
   const { loading, students, error } = studentClassList
-  // var x =
-  //   localStorage.getItem('studentsfinal') &&
-  //   JSON.parse(localStorage.getItem('studentsfinal'))
-  // console.log('value of x is', x)
-  const studentsfinal = [...students]
-  for (i = 0; i < studentsfinal.length; i++) {
+
+  const studentsfinal = students && [...students]
+
+  for (i = 0; i < studentsfinal && studentsfinal.length; i++) {
     studentsfinal[i].attendance = false
-    // studentsfinal[i].attendance===true
-    //   ? studentsfinal[i].attendance===true
-    //   : studentsfinal[i].attendance===false
   }
 
   useEffect(() => {
@@ -30,22 +24,23 @@ const StudentDeepAttendance = ({ match }) => {
   }, [dispatch, matchid])
   var i = 1
   const toggleAttendance = (id) => {
-    var x = JSON.parse(localStorage.getItem('studentsfinal'))
-    console.log(x)
+    var x = JSON.parse(localStorage.getItem(matchid))
 
     setClicked(true)
 
     setPresent(!present)
-    const newStudentsList = [...x]
+
+    const newStudentsList = x ? [...x] : [...studentsfinal]
     const element = newStudentsList.findIndex((elem) => elem._id == id)
     newStudentsList[element] = {
       ...newStudentsList[element],
-      attendance:! present,
+      attendance: !present,
     }
+    console.log('later value', present)
     console.log(newStudentsList)
 
     setStudentlist(newStudentsList)
-    localStorage.setItem('studentsfinal', JSON.stringify(newStudentsList))
+    localStorage.setItem(matchid, JSON.stringify(newStudentsList))
   }
 
   return (
@@ -72,6 +67,7 @@ const StudentDeepAttendance = ({ match }) => {
               </tr>
             </thead>
             <tbody>
+              {console.log(present)}
               {clicked
                 ? studentlist.map((student) => (
                     <tr key={student._id} className='attendance'>

@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose'
 const studentAttendanceSchema = mongoose.Schema({
   class_teacher: {
