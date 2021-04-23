@@ -6,19 +6,48 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 const StudentDeepAttendance = ({ match }) => {
   const matchid = match.params.class
+  const [studentlist, setStudentlist] = useState([])
   //   console.log(matchid)
   const [present, setPresent] = useState(false)
   const dispatch = useDispatch()
+  const [clicked, setClicked] = useState(false)
   const studentClassList = useSelector((state) => state.studentClassList)
   const { loading, students, error } = studentClassList
+  // var x =
+  //   localStorage.getItem('studentsfinal') &&
+  //   JSON.parse(localStorage.getItem('studentsfinal'))
+  // console.log('value of x is', x)
+  const studentsfinal = [...students]
+  for (i = 0; i < studentsfinal.length; i++) {
+    studentsfinal[i].attendance = false
+    // studentsfinal[i].attendance===true
+    //   ? studentsfinal[i].attendance===true
+    //   : studentsfinal[i].attendance===false
+  }
+
   useEffect(() => {
     dispatch(classlistStudent(matchid))
   }, [dispatch, matchid])
   var i = 1
-  const toggleAttendance = () => {
+  const toggleAttendance = (id) => {
+    var x = JSON.parse(localStorage.getItem('studentsfinal'))
+    console.log(x)
+
+    setClicked(true)
+
     setPresent(!present)
-    console.log(present)
+    const newStudentsList = [...x]
+    const element = newStudentsList.findIndex((elem) => elem._id == id)
+    newStudentsList[element] = {
+      ...newStudentsList[element],
+      attendance:! present,
+    }
+    console.log(newStudentsList)
+
+    setStudentlist(newStudentsList)
+    localStorage.setItem('studentsfinal', JSON.stringify(newStudentsList))
   }
+
   return (
     <div className='container1'>
       <div className='attendance-outer'>
@@ -43,21 +72,36 @@ const StudentDeepAttendance = ({ match }) => {
               </tr>
             </thead>
             <tbody>
-              {students &&
-                students.map((student) => (
-                  <tr key={student._id} className='attendance'>
-                    <td>{i++}</td>
-                    <td>{student.student_name}</td>
-                    <td>{student.roll_no}</td>
-                    <td
-                      onClick={toggleAttendance}
-                      className={present ? 'present' : 'absent'}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      {present ? 'Present' : 'Absent'}
-                    </td>
-                  </tr>
-                ))}
+              {clicked
+                ? studentlist.map((student) => (
+                    <tr key={student._id} className='attendance'>
+                      <td>{i++}</td>
+                      <td>{student.student_name}</td>
+                      <td>{student.roll_no}</td>
+                      <td
+                        onClick={() => toggleAttendance(student._id)}
+                        className={student.attendance ? 'present' : 'absent'}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {student.attendance ? 'Present' : 'Absent'}
+                      </td>
+                    </tr>
+                  ))
+                : studentsfinal &&
+                  studentsfinal.map((student) => (
+                    <tr key={student._id} className='attendance'>
+                      <td>{i++}</td>
+                      <td>{student.student_name}</td>
+                      <td>{student.roll_no}</td>
+                      <td
+                        onClick={() => toggleAttendance(student._id)}
+                        className={student.attendance ? 'present' : 'absent'}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {student.attendance ? 'Present' : 'Absent'}
+                      </td>
+                    </tr>
+                  ))}
             </tbody>
           </table>
         )}

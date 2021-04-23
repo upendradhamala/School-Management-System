@@ -352,6 +352,7 @@ th, td {
     padding:10px;
     background: rgb(196, 203, 211);
     padding-bottom: 20px;
+    overflow: auto;
 }
 
     /* FOR STUDENT ATTENDANCE */
@@ -366,6 +367,7 @@ th, td {
 .attendance-outer table {
     border:none;
     background: red;
+    
     /* padding:100px; */
     /* max-width: 800px; */
 }
