@@ -67,7 +67,7 @@ const StudentDeepAttendance = ({ match }) => {
             {new NepaliDate().format('YYYY-MM-D')}
           </span>{' '}
         </h1>
-        {studentsattendance && studentsattendance.length > 0 && (
+        {studentsattendance &&  (
           <Message variant='success' message='Successfully taken' />
         )}
         {errorattendance && (
