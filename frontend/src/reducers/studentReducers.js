@@ -21,6 +21,7 @@ import {
   STUDENT_ATTENDANCE_RESET,
   STUDENT_LIST_CLEAR,
   STUDENT_CLASS_LIST_CLEAR,
+  STUDENT_SEARCH_CLEAR,
 } from '../constants/studentConstants'
 //following displays list of all students
 export const studentListReducer = (state = { students: [] }, action) => {
@@ -62,6 +63,8 @@ export const studentSearchReducer = (state = {}, action) => {
       return { loading: false, student: action.payload }
     case STUDENT_SEARCH_FAIL:
       return { loading: false, error: action.payload }
+    case STUDENT_SEARCH_CLEAR:
+      return {}
     default:
       return state
   }
