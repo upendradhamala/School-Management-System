@@ -398,3 +398,36 @@ th, td {
         text-transform: uppercase;
 
     }
+
+
+
+    .admitCard-outer{
+        /* border:2px solid red; */
+        /* padding:100px; */
+        /* height:100vh; */
+        margin:auto;
+        margin: 100px 100px 0 100px;
+
+
+
+
+    }
+
+    .admitCard-outer .link{
+        display: block;
+        text-align: left;
+        padding:20px;
+        background: rgb(0, 11, 109);
+        margin:auto;
+        color:white;
+        text-decoration: none;
+        margin-top: 20px;
+        border-radius: 10px;
+
+        /* border:2px solid red; */
+    }
+    .admitCard-outer .link:hover{
+        /* opacity: 0.8; */
+        background: darkorange;
+        color:black;
+    }
