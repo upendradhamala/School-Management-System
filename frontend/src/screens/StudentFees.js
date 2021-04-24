@@ -95,7 +95,7 @@ const StudentFees = () => {
           </div>{' '} */}
                 <div className='form-control'>
                   <label for='name'>Class</label>
-                  <select id='class' value={student.class}>
+                  <select id='class' value={student.classname}>
                     <option value=''>Select</option>
 
                     <option value='Nursery'>Nursery</option>

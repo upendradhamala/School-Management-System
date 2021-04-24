@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose'
 const studentAttendanceSchema = mongoose.Schema({
   class_teacher: {
@@ -8,6 +7,10 @@ const studentAttendanceSchema = mongoose.Schema({
   attendance_date: {
     type: Date,
     default: Date.now(),
+  },
+  classname: {
+    type: String,
+    required: true,
   },
   students: [
     {
@@ -39,3 +42,4 @@ const StudentAttendance = mongoose.model(
   'StudentAttendance',
   studentAttendanceSchema
 )
+export default StudentAttendance

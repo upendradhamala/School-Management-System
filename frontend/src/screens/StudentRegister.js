@@ -9,7 +9,7 @@ import './Student.css'
 const StudentRegister = ({ history }) => {
   const dispatch = useDispatch()
   const [uploading, setUploading] = useState(false)
-
+  const [valid, setValid] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
@@ -51,6 +51,7 @@ const StudentRegister = ({ history }) => {
   }
   const submitHandler = (e) => {
     e.preventDefault()
+    setValid(true)
     dispatch(
       Register(
         name,
@@ -67,7 +68,10 @@ const StudentRegister = ({ history }) => {
     )
     setName('')
     setAddress('')
-    // setImage('')
+    setImage('')
+    setTimeout(() => {
+      setValid(false)
+    }, 3000)
   }
   const userLogin = useSelector((state) => state.userLogin)
   // const userLogin = useSelector((state) => state.userLogin)
@@ -207,24 +211,30 @@ const StudentRegister = ({ history }) => {
               </label>
               {uploading && <Loader />}
               {image && (
-                <img
-                  className='mt-2'
-                  src={image}
-                  style={{ height: '100px' }}
-                  alt='image1'
+                <Message
+                  variant='success'
+                  message='Picture uploaded successfully'
                 />
               )}
             </div>
             {/* <div className="register-btn"> */}
             {/* </div> */}
           </div>
+          {success &&
+            valid &&(
+              <Message
+                style={{ marginBottom: '3px' }}
+                variant='success'
+                message={success.message}
+              />
+            )}
+
           <button className='btn-register' type='submit'>
             Register Student
           </button>
         </form>
         {loading && <Loader />}
         {error && <Message variant='danger' message={error} />}
-        {success && <Message variant='success' message={success.message} />}
       </div>
     </div>
   )

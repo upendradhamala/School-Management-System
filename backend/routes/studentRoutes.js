@@ -2,8 +2,10 @@ import express from 'express'
 import asyncHandler from 'express-async-handler'
 import Student from '../models/studentModel.js'
 import capitalize from '../config/capitalize.js'
-import protect from '../middleware/authMiddleware.js'
+import NepaliDate from 'nepali-date-converter'
 
+import protect from '../middleware/authMiddleware.js'
+import StudentAttendance from '../models/studentAttendanceModel.js'
 const router = express.Router()
 
 router.get(
@@ -126,6 +128,45 @@ router.post(
 //following route is for paying the fees of students
 
 //following route is for attendance of students
+router.post(
+  '/attendance/:classname',
+  protect,
+  asyncHandler(async (req, res) => {
+    // const students = await Student.find({})
+    const { students } = req.body
+    console.log(req.body)
+    const class_teacher = req.user.name
+    // console.log(req.params.classname)
+    const attendanceFound = await StudentAttendance.findOne({
+      attendance_date: new NepaliDate().format('YYYY-MM-D'),
+      classname: req.params.classname,
+    })
+    console.log(attendanceFound)
+    if (attendanceFound) {
+      res.status(500)
+      throw new Error(
+        `You have already taken class ${req.params.classname} attendance`
+      )
+    } else {
+      const new_attendance = await StudentAttendance.create({
+        class_teacher,
+        classname: req.params.classname,
+        attendance_date: new NepaliDate().format('YYYY-MM-D'),
+        students,
+      })
+      // console.log(new_attendance)
+      if (new_attendance) {
+        res.status(201).json({
+          message: 'Attendance taken successfully',
+        })
+      } else {
+        res.status(400)
+        console.log(error)
+        throw new Error('Unable to take attendance')
+      }
+    }
+  })
+)
 
 //following route is for admit card of the student
 

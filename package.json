@@ -28,7 +28,8 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.4"
+    "mongoose": "^5.12.4",
+    "nepali-date-converter": "^3.3.1"
   },
   "devDependencies": {
     "concurrently": "^6.0.2",
