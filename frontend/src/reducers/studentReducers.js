@@ -15,6 +15,10 @@ import {
   STUDENT_DELETE_REQUEST,
   STUDENT_DELETE_SUCCESS,
   STUDENT_DELETE_FAIL,
+  STUDENT_ATTENDANCE_REQUEST,
+  STUDENT_ATTENDANCE_SUCCESS,
+  STUDENT_ATTENDANCE_FAIL,
+  STUDENT_ATTENDANCE_RESET,
 } from '../constants/studentConstants'
 //following displays list of all students
 export const studentListReducer = (state = { students: [] }, action) => {
@@ -80,6 +84,20 @@ export const studentDeleteReducer = (state = {}, action) => {
       return { loading: false, success: action.payload }
     case STUDENT_DELETE_FAIL:
       return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+export const studentAttendanceReducer = (state = { students: [] }, action) => {
+  switch (action.type) {
+    case STUDENT_ATTENDANCE_REQUEST:
+      return { loading: true }
+    case STUDENT_ATTENDANCE_SUCCESS:
+      return { loading: false, students: action.payload }
+    case STUDENT_ATTENDANCE_FAIL:
+      return { loading: false, error: action.payload }
+    case STUDENT_ATTENDANCE_RESET:
+      return {}
     default:
       return state
   }

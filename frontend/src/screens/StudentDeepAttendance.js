@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { classlistStudent } from '../actions/studentActions'
+import { classlistStudent, studentAttendances } from '../actions/studentActions'
+import {STUDENT_ATTENDANCE_RESET} from '../constants/studentConstants'
 import NepaliDate from 'nepali-date-converter'
-// import Loader from '../components/Loader'
+import Loader from '../components/Loader'
 import Message from '../components/Message'
 const StudentDeepAttendance = ({ match }) => {
   const matchid = match.params.class
@@ -10,6 +11,12 @@ const StudentDeepAttendance = ({ match }) => {
   const [present, setPresent] = useState(false)
   const dispatch = useDispatch()
   const [clicked, setClicked] = useState(false)
+  const studentAttendance = useSelector((state) => state.studentAttendance)
+  const {
+    loading: loadingattendance,
+    students: studentsattendance,
+    error: errorattendance,
+  } = studentAttendance
   const studentClassList = useSelector((state) => state.studentClassList)
   const { loading, students, error } = studentClassList
 
@@ -20,9 +27,17 @@ const StudentDeepAttendance = ({ match }) => {
   }
 
   useEffect(() => {
+    dispatch({
+      type:STUDENT_ATTENDANCE_RESET
+    })
     dispatch(classlistStudent(matchid))
   }, [dispatch, matchid])
   var i = 1
+  const submitAttendance = () => {
+    // console.log(studentlist)
+    dispatch(studentAttendances(matchid, studentlist))
+    console.log('done')
+  }
   const toggleAttendance = (id) => {
     var x = JSON.parse(localStorage.getItem(matchid))
 
@@ -36,8 +51,8 @@ const StudentDeepAttendance = ({ match }) => {
       ...newStudentsList[element],
       attendance: !present,
     }
-    console.log('later value', present)
-    console.log(newStudentsList)
+    // console.log('later value', present)
+    // console.log(newStudentsList)
 
     setStudentlist(newStudentsList)
     localStorage.setItem(matchid, JSON.stringify(newStudentsList))
@@ -52,6 +67,14 @@ const StudentDeepAttendance = ({ match }) => {
             {new NepaliDate().format('YYYY-MM-D')}
           </span>{' '}
         </h1>
+        {studentsattendance && studentsattendance.length > 0 && (
+          <Message variant='success' message='Successfully taken' />
+        )}
+        {errorattendance && (
+          <Message variant='danger' message={errorattendance} />
+        )}
+        <br />
+        {loadingattendance && <Loader />}
         {loading ? (
           <loader />
         ) : error ? (
@@ -101,6 +124,13 @@ const StudentDeepAttendance = ({ match }) => {
             </tbody>
           </table>
         )}
+        <button
+          onClick={submitAttendance}
+          style={{ marginTop: '10px', maxWidth: '30%', display: 'block' }}
+          className='btn-register'
+        >
+          Submit
+        </button>
       </div>
     </div>
   )
