@@ -431,3 +431,70 @@ th, td {
         background: darkorange;
         color:black;
     }
+
+    /* for admit card */
+    /* .container5{
+        display: grid;
+        grid-template-areas: Top Bottom;
+    } */
+    
+.admitCard
+{
+    display: grid;
+    grid-template-areas: 'top top top'
+    'middle middle middle'
+    'bottom bottom bottom';
+    grid-gap: 10px;
+    background-color: #d8e1e9;
+    padding: 10px;
+    width:600px;
+    padding-bottom: 30px;
+    /* height:300px; */
+}
+.admitCardTop{
+    grid-area: top;
+    /* border: 2px solid red; */
+    display:grid;
+    background:rgb(90, 33, 33);
+    grid-template-columns: 0.1fr 1fr;
+}
+.admitCardTop img{
+   width:90px;
+   height: 80px;
+}
+.admitCardMiddle{
+    grid-area:middle;
+    /* border: 2px solid red; */
+    background:rgb(196, 165, 111);
+    padding:0 20px 20px 20px;
+
+}
+.admitCardBottom{
+    grid-area: bottom;
+    /* border: 2px solid red; */
+    background:rgb(127, 92, 209);
+    padding:3px;
+
+
+}
+
+.schooldetails{
+    text-align: center;
+    color:white;
+    margin: auto;
+}
+
+
+.details{
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+}
+
+.details p{
+    /* border:2px solid red; */
+    padding:5px;
+}
+.details img{
+    width:80px ;
+    
+}

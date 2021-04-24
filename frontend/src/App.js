@@ -11,6 +11,7 @@ import StudentAttendance from './screens/StudentAttendance'
 import AllStudents from './screens/AllStudents'
 import StudentDeepAttendance from './screens/StudentDeepAttendance'
 import StudentAdmitCard from './screens/StudentAdmitCard'
+import AllStudentsAdmitCard from './screens/AllStudentsAdmitCard'
 
 const App = () => {
   return (
@@ -39,6 +40,8 @@ const App = () => {
           />
           <Route path='/students' component={AllStudents} exact />
           <Route path='/admit_card' component={StudentAdmitCard} exact />
+          <Route path='/admit_card/allstudents' component={AllStudentsAdmitCard} exact />
+
         </Switch>
       </div>
     </Router>
