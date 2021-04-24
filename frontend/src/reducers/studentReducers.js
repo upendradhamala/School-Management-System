@@ -19,6 +19,8 @@ import {
   STUDENT_ATTENDANCE_SUCCESS,
   STUDENT_ATTENDANCE_FAIL,
   STUDENT_ATTENDANCE_RESET,
+  STUDENT_LIST_CLEAR,
+  STUDENT_CLASS_LIST_CLEAR,
 } from '../constants/studentConstants'
 //following displays list of all students
 export const studentListReducer = (state = { students: [] }, action) => {
@@ -29,6 +31,8 @@ export const studentListReducer = (state = { students: [] }, action) => {
       return { loading: false, students: action.payload }
     case STUDENT_LIST_FAIL:
       return { loading: false, error: action.payload }
+    case STUDENT_LIST_CLEAR:
+      return {}
     default:
       return state
   }
@@ -41,6 +45,8 @@ export const studentClassListReducer = (state = { students: [] }, action) => {
     case STUDENT_CLASS_LIST_SUCCESS:
       return { loading: false, students: action.payload }
     case STUDENT_CLASS_LIST_FAIL:
+      return { loading: false, error: action.payload }
+    case STUDENT_CLASS_LIST_CLEAR:
       return { loading: false, error: action.payload }
     default:
       return state

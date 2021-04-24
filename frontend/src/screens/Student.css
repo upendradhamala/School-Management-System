@@ -498,3 +498,55 @@ th, td {
     width:80px ;
     
 }
+
+.arrange{
+    margin-bottom:50px;
+    /* border: 2px solid red; */
+    display: grid;
+    place-content: center;
+    place-items: center;
+    /* text-align: center; */
+    /* margin: auto; */
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+}
+
+
+.exam form{
+        /* border: 2px solid red; */
+        display: grid;
+        width: 50%;
+        place-content: center;
+        grid-template-columns: 1fr 0.1fr;
+        margin: auto;
+        margin-bottom: 40px;
+
+        /* place-items: center; */
+    } 
+        
+.exam form button{
+    padding:10px;
+    background:rgb(76, 175, 63);
+    outline:none;
+    border:none;
+    color:white;
+    cursor: pointer;
+
+}
+.examNumber{
+    padding:10px;
+    /* margin-bottom: 40px; */
+    /* width: 300px; */
+    outline: none;
+    /* margin: auto; */
+    /* text-align: center; */
+    /* display: grid;
+    place-content: center;
+    place-items: center; */
+    /* margin-left: 200px; */
+    /* margin:auto; */
+    /* display: flex;
+    justify-content: center;
+    justify-items: center; */
+
+}

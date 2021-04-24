@@ -5,7 +5,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { deleteStudent } from '../actions/studentActions'
 
-const AllStudents = ({ match }) => {
+const AllStudents = ({  }) => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, students, error } = studentList

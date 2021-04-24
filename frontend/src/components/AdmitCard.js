@@ -1,13 +1,13 @@
 import React from 'react'
 
-const AdmitCard = () => {
+const AdmitCard = ({ examination, name, classname, rollno, image }) => {
   return (
     <div className='admitCard'>
       <div className='admitCardTop'>
         <img src='/images/schoollogo.jpeg' alt='logo' />
         <div className='schooldetails'>
-          <h2>Hope International Academy</h2>
-          <h4>First Terminal Examination</h4>
+            <h2>Hope International Academy</h2>
+          <h4>{examination}</h4>
         </div>
       </div>
       {/* <h2>Student Details</h2> */}
@@ -20,15 +20,17 @@ const AdmitCard = () => {
             <p>Roll No</p>
           </div>
           <div className='right-details'>
-            <p>Upendra Dhamala</p>
-            <p>10</p>
-            <p>34</p>
+            <p>{name}</p>
+            <p>{classname}</p>
+            <p>{rollno}</p>
           </div>
-          <img src='/images/schoollogo.jpeg' alt='' />
+          <img src={image} alt='' />
         </div>
       </div>
       <div className='admitCardBottom' style={{ textAlign: 'center' }}>
         <h4>In case any problem occurs, contact your school.</h4>
+        {/* <h4>In case any problem occurs, contact your school.</h4> */}
+
       </div>
     </div>
   )

@@ -145,7 +145,7 @@ router.post(
     if (attendanceFound) {
       res.status(500)
       throw new Error(
-        `You have already taken class ${req.params.classname} attendance`
+        `You have already taken class ${req.params.classname} attendance for today.`
       )
     } else {
       const new_attendance = await StudentAttendance.create({
