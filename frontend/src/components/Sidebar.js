@@ -108,6 +108,12 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
             Details
           </Link>
         </div>
+        <div className='sidebar__link'>
+          <i className='fas fa-school'></i>
+          <Link className='linked' to='/non-teaching_staff_attendance'>
+            Attendance
+          </Link>
+        </div>
         <div className='sidebar__logout'>
           <i className='fa fa-power-off'></i>
           <Link className='linked' onClick={logoutHandler} to='/login'>
