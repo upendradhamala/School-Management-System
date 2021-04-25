@@ -73,13 +73,42 @@ router.post(
     console.log(new_teacher)
     if (new_teacher) {
       res.status(201).json({
-        message: 'teacher registered successfully',
+        message: 'Teacher registered successfully',
       })
       console.log('registered successfully')
     } else {
       res.status(400)
       console.log(error)
-      throw new Error('Unable to register teacher')
+      throw new Error('Unable to register the teacher')
+    }
+  })
+)
+//router for getting all the teachers
+router.get(
+  '/',
+  asyncHandler(async (req, res) => {
+    const teachers = await Teacher.find({})
+    if (teachers.length > 0) {
+      res.json(teachers)
+    } else {
+      res.status(500)
+      throw new Error('No Teachers found')
+    }
+  })
+)
+
+//following route is for deleting the teacher
+
+router.delete(
+  '/delete/:id',
+  asyncHandler(async (req, res) => {
+    const teacher = await Teacher.findOne({ teacherId: req.params.id })
+    if (teacher) {
+      await teacher.remove()
+      res.json({ message: 'Teacher Deleted successfully' })
+    } else {
+      res.status(404)
+      throw new Error('Teacher not found with the given ID')
     }
   })
 )
