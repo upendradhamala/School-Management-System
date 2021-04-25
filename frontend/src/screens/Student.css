@@ -524,13 +524,15 @@ th, td {
         /* place-items: center; */
     } 
         
-.exam form button{
+.printcmd{
     padding:10px;
-    background:rgb(76, 175, 63);
+    background:red;
     outline:none;
     border:none;
     color:white;
     cursor: pointer;
+    margin-bottom: 10px;
+    /* margin: auto; */
 
 }
 .examNumber{
@@ -550,3 +552,22 @@ th, td {
     justify-items: center; */
 
 }
+
+@media print {
+    @page { size: 110mm 54.5mm; }
+  }
+
+
+  .prints{
+      display: grid;
+      place-content: center;
+      place-items: center;
+      gap:10px
+
+  }
+
+  .la{
+      display:grid;
+      place-items: center;
+      place-content: center;
+  }

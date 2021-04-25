@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listStudents } from '../actions/studentActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import AdmitCard from '../components/AdmitCard'
+import { AdmitCard } from '../components/AdmitCard'
 import { classlistStudent } from '../actions/studentActions'
-
+import './admitcard.css'
 import { STUDENT_CLASS_LIST_CLEAR } from '../constants/studentConstants'
 // import StudentClassAdmitCard from './StudentClassAdmitCard'
 const StudentClassAdmitCardDeep = ({ match }) => {
@@ -15,6 +15,9 @@ const StudentClassAdmitCardDeep = ({ match }) => {
   const studentClassList = useSelector((state) => state.studentClassList)
   const { loading, students, error } = studentClassList
 
+  const Print = () => {
+    window.print()
+  }
   useEffect(() => {
     dispatch({
       type: STUDENT_CLASS_LIST_CLEAR,
@@ -25,7 +28,7 @@ const StudentClassAdmitCardDeep = ({ match }) => {
     <div className='container1'>
       <div className='exam'></div>
       {loading && <Loader />}
-      {error && <Message variant="danger" message={error}/>}
+      {error && <Message variant='danger' message={error} />}
       {students &&
         students.map((student) => (
           <div key={student._id} className='arrange'>
@@ -38,6 +41,13 @@ const StudentClassAdmitCardDeep = ({ match }) => {
             />
           </div>
         ))}
+      {students && (
+        <div className='la'>
+          <button onClick={Print} className='printcmd'>
+            Print All
+          </button>
+        </div>
+      )}
     </div>
   )
 }

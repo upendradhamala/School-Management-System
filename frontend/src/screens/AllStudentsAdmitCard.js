@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listStudents } from '../actions/studentActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import AdmitCard from '../components/AdmitCard'
+import './admitcard.css'
+
+import { AdmitCard } from '../components/AdmitCard'
 import { STUDENT_LIST_CLEAR } from '../constants/studentConstants'
 const AllStudentsAdmitCard = () => {
   const [examno, setExamno] = useState('')
@@ -13,7 +15,9 @@ const AllStudentsAdmitCard = () => {
   const dispatch = useDispatch()
   const studentList = useSelector((state) => state.studentList)
   const { loading, students, error } = studentList
-
+  const Print = () => {
+    window.print()
+  }
   useEffect(() => {
     dispatch({
       type: STUDENT_LIST_CLEAR,
@@ -49,6 +53,13 @@ const AllStudentsAdmitCard = () => {
             />
           </div>
         ))}
+      {students && (
+        <div className='la'>
+          <button onClick={Print} className='printcmd'>
+            Print All
+          </button>
+        </div>
+      )}
     </div>
   )
 }

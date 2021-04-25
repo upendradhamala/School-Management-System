@@ -1,0 +1,10 @@
+@media print {
+    @page { size: 200mm 90mm; margin: 0mm; }
+    header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+        display: none !important;
+      }
+      /* .arrange{
+          border: 2px solid red;
+          margin:2px;
+      } */
+  }

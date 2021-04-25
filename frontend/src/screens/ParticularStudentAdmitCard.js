@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
+import ReactToPrint from 'react-to-print'
 
-import AdmitCard from '../components/AdmitCard'
+import { AdmitCard } from '../components/AdmitCard'
 
 import Loader from '../components/Loader'
 // import axios from 'axios'
@@ -11,13 +12,17 @@ import { STUDENT_SEARCH_CLEAR } from '../constants/studentConstants'
 
 import { studentSearch } from '../actions/studentActions'
 const ParticularStudentAdmitCard = () => {
+  const componentRef = useRef()
+
   const dispatch = useDispatch()
   const studentdetails = useSelector((state) => state.studentSearch)
   const { loading, student, error } = studentdetails
   const [name, setName] = useState('')
   const [classname, setClassname] = useState('')
   const [rollno, setRollno] = useState('')
-
+  const print = () => {
+    window.print()
+  }
   const formSubmit = async (e) => {
     e.preventDefault()
     dispatch(studentSearch(name, classname, rollno))
@@ -81,13 +86,23 @@ const ParticularStudentAdmitCard = () => {
 
       <div className='arrange'>
         {student && (
-          <AdmitCard
-            examination='Terminal Examination'
-            name={student.student_name}
-            classname={student.classname}
-            rollno={student.roll_no}
-            image={student.image}
-          />
+          <div className='prints'>
+            <AdmitCard
+              className='print'
+              examination='Terminal Examination'
+              name={student.student_name}
+              classname={student.classname}
+              rollno={student.roll_no}
+              image={student.image}
+              ref={componentRef}
+            />
+            <ReactToPrint
+              trigger={() => (
+                <button className='printcmd'>Print this out!</button>
+              )}
+              content={() => componentRef.current}
+            />
+          </div>
         )}
       </div>
     </div>
