@@ -2,9 +2,9 @@ import mongoose from 'mongoose'
 const studentFeesSchema = mongoose.Schema(
   {
     accountant: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
-      ref: 'Admin',
+
     },
     student_name: {
       type: String,
@@ -53,3 +53,4 @@ const studentFeesSchema = mongoose.Schema(
 )
 
 const StudentFees = mongoose.model('StudentFees', studentFeesSchema)
+export default StudentFees

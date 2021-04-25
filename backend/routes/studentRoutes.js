@@ -3,7 +3,7 @@ import asyncHandler from 'express-async-handler'
 import Student from '../models/studentModel.js'
 import capitalize from '../config/capitalize.js'
 import NepaliDate from 'nepali-date-converter'
-
+import StudentFees from '../models/studentFeesModel.js'
 import protect from '../middleware/authMiddleware.js'
 import StudentAttendance from '../models/studentAttendanceModel.js'
 const router = express.Router()
@@ -186,8 +186,6 @@ router.delete(
   })
 )
 
-//fee paying
-
 router.post(
   '/fees/:id',
   protect,
@@ -205,14 +203,39 @@ router.post(
       exam_fees,
       miscellaneous,
     } = req.body
+    console.log(req.params.id)
+    console.log(req.body)
     const student = await Student.findById(req.params.id)
+    console.log('student is ', student)
     if (student) {
       const accountant = req.user.name
+      const fees_submitted = await StudentFees.create({
+        accountant,
+        student_name,
+        classname,
+        roll_no,
+        month_name,
+        year,
+        monthly_fees,
+        hostel_fees,
+        laboratory_fees,
+        computer_fees,
+        exam_fees,
+        miscellaneous,
+      })
+      if (fees_submitted) {
+        res.status(201).json({ message: 'Fees Paid successfully' })
+      } else {
+        res.status(400)
+        throw new Error('Error occured while paying fees')
+      }
     } else {
       res.status(404)
       throw new Error('Student not found')
     }
   })
 )
+
+//for the fees of students
 
 export default router
