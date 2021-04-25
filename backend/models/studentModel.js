@@ -1,11 +1,6 @@
 import mongoose from 'mongoose'
 const studentSchema = mongoose.Schema(
   {
-    // user: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: 'Admin',
-    // },
     registered_by: {
       type: String,
       required: true,

@@ -54,7 +54,7 @@ const StudentRegister = ({ history }) => {
     setValid(true)
     dispatch(
       Register(
-        name,
+        name.trim(),
         classname,
         address,
         parentname,
@@ -68,7 +68,7 @@ const StudentRegister = ({ history }) => {
     )
     setName('')
     setAddress('')
-    setImage('')
+    // setImage('')
     setTimeout(() => {
       setValid(false)
     }, 3000)

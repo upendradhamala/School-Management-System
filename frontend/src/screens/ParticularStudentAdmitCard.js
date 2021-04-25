@@ -42,8 +42,7 @@ const ParticularStudentAdmitCard = () => {
     <div className='container1'>
       {/* <style>{`@media print {.contacts{display: none;}}`}</style> */}
       {/* following is the thing  I have been searching from the morning  */}
-      <style>{`@media print {    @page { size: 110mm 54.5mm; }
-}`}</style>
+      <style>{`@media print {    @page { size: 110mm 54.5mm; }}`}</style>
       <div className='search-form'>
         <h4>Search for Student to pay fees</h4>
 

@@ -95,9 +95,10 @@ router.post(
     const previous_dues = 3333
     // const roll_no = 3
     console.log('roll no is', roll_no)
+    const studentname = capitalize(student_name)
     const new_student = await Student.create({
       registered_by,
-      student_name,
+      student_name: studentname,
       email,
       address,
       gender,
