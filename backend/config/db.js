@@ -5,6 +5,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     })
     console.log('MongoDB connected.')
   } catch (error) {
@@ -14,4 +15,3 @@ const connectDB = async () => {
 }
 
 export default connectDB
-

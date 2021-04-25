@@ -4,7 +4,8 @@ import express from 'express'
 // const express = require('express')
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
-import items from './data/Data.js'
+// import items from './data/Data.js'
+import Dashboard from './models/dashboardModel.js'
 // import classes from './data/ClassData.js'
 import studentRoutes from './routes/studentRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
@@ -16,23 +17,16 @@ dotenv.config()
 connectDB()
 const app = express()
 app.use(express.json())
-// app.use((req,res,next)=>{
-//   consolle
-// })
-// app.get('/', (req, res) => {
-//   res.send('API is running.')
-// })
-app.get('/dashboard', (req, res) => {
-  //   res.send('Students route is running .')
-  // const items = itemslist.find({})
-  //following will convert the items to the json format
+
+app.get('/dashboard', async (req, res) => {
+  const items = await Dashboard.find()
+  console.log(items)
   res.json(items)
 })
 
 app.use('/api/students', studentRoutes)
 app.use('/api/login', adminRoutes)
 app.use('/api/teachers', teacherRoutes)
-
 
 app.get('/api/config/cloudinary', (req, res) => {
   res.send(process.env.CLOUDINARY_URL)

@@ -6,6 +6,7 @@ import NepaliDate from 'nepali-date-converter'
 import StudentFees from '../models/studentFeesModel.js'
 import protect from '../middleware/authMiddleware.js'
 import StudentAttendance from '../models/studentAttendanceModel.js'
+import Dashboard from '../models/dashboardModel.js'
 const router = express.Router()
 
 router.get(
@@ -114,6 +115,13 @@ router.post(
     })
     console.log(new_student)
     if (new_student) {
+      const total_students = (await Student.find()).length
+      await Dashboard.findOneAndUpdate(
+        { title: 'Students' },
+        { number: total_students }
+      )
+      console.log("done")
+      console.log('total number of students', total_students)
       res.status(201).json({
         message: 'Student registered successfully',
       })
@@ -225,7 +233,7 @@ router.post(
       })
       if (fees_submitted) {
         res.status(201).json({ message: 'Fees Paid successfully' })
-        console.log("fees success")
+        console.log('fees success')
       } else {
         res.status(400)
         throw new Error('Error occured while paying fees')

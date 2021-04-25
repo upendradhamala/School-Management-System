@@ -4,6 +4,7 @@
     /* background: url("student.jpg"); */
     padding:10px;
     overflow-y: auto;
+    /* background: chocolate; */
     /* display: grid; */
     /* place-content: center; */
     /* place-items: center; */
@@ -15,7 +16,7 @@
 .outer-layout{
     /* max-height:650px; */
     max-width:80vw;
-    background: rgb(99, 154, 206);
+    background: rgb(7, 91, 170);
     margin: auto;
     padding:10px;
     /* border: 3px solid red;
