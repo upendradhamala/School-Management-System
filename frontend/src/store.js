@@ -10,7 +10,8 @@ import {
   studentSearchReducer,
   studentRegisterReducer,
   studentDeleteReducer,
-  studentAttendanceReducer
+  studentAttendanceReducer,
+  studentFeesReducer,
 } from './reducers/studentReducers'
 
 const reducer = combineReducers({
@@ -20,7 +21,8 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   studentRegister: studentRegisterReducer,
   studentDelete: studentDeleteReducer,
-  studentAttendance:studentAttendanceReducer
+  studentAttendance: studentAttendanceReducer,
+  studentFees: studentFeesReducer,
 })
 const userInfoFromStorage = localStorage.getItem('userCred')
   ? JSON.parse(localStorage.getItem('userCred'))

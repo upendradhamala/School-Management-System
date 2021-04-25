@@ -18,6 +18,9 @@ import {
   STUDENT_ATTENDANCE_FAIL,
   STUDENT_ATTENDANCE_SUCCESS,
   STUDENT_ATTENDANCE_REQUEST,
+  STUDENT_FEES_REQUEST,
+  STUDENT_FEES_SUCCESS,
+  STUDENT_FEES_FAIL,
 } from '../constants/studentConstants'
 
 //the below uses function within a function which is privileged by redux-thunk
@@ -215,6 +218,71 @@ export const studentAttendances = (classname, students) => async (
   } catch (error) {
     dispatch({
       type: STUDENT_ATTENDANCE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//fees
+
+export const PayFees = (
+  studentId,
+  student_name,
+
+  classname,
+  roll_no,
+  month_name,
+  year,
+  monthly_fees,
+  hostel_fees,
+  laboratory_fees,
+  computer_fees,
+  exam_fees,
+  miscellaneous
+) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: STUDENT_FEES_REQUEST,
+    })
+    //we need to send headers information so we declaring it inside the config
+    const {
+      userLogin: { userCred },
+    } = getState()
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userCred.token}`,
+      },
+    }
+    const { data } = await axios.post(
+      `/api/students/fees/${studentId}`,
+      {
+        student_name,
+        classname,
+        roll_no,
+        month_name,
+        year,
+        monthly_fees,
+        hostel_fees,
+        laboratory_fees,
+        computer_fees,
+        exam_fees,
+        miscellaneous,
+      },
+      config
+    )
+    dispatch({
+      type: STUDENT_FEES_SUCCESS,
+      payload: data,
+    })
+    //we are getting  the json data from our backend request so we need to convert it into the
+    //string before we save them in our local storage of our  browser
+  } catch (error) {
+    dispatch({
+      type: STUDENT_FEES_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

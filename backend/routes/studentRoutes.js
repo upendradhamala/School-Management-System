@@ -206,7 +206,7 @@ router.post(
     console.log(req.params.id)
     console.log(req.body)
     const student = await Student.findById(req.params.id)
-    console.log('student is ', student)
+    // console.log('student is ', student)
     if (student) {
       const accountant = req.user.name
       const fees_submitted = await StudentFees.create({
@@ -225,6 +225,7 @@ router.post(
       })
       if (fees_submitted) {
         res.status(201).json({ message: 'Fees Paid successfully' })
+        console.log("fees success")
       } else {
         res.status(400)
         throw new Error('Error occured while paying fees')

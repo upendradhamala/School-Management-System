@@ -22,6 +22,10 @@ import {
   STUDENT_LIST_CLEAR,
   STUDENT_CLASS_LIST_CLEAR,
   STUDENT_SEARCH_CLEAR,
+  STUDENT_FEES_REQUEST,
+  STUDENT_FEES_SUCCESS,
+  STUDENT_FEES_FAIL,
+  STUDENT_FEES_RESET,
 } from '../constants/studentConstants'
 //following displays list of all students
 export const studentListReducer = (state = { students: [] }, action) => {
@@ -106,6 +110,22 @@ export const studentAttendanceReducer = (state = { students: [] }, action) => {
     case STUDENT_ATTENDANCE_FAIL:
       return { loading: false, error: action.payload }
     case STUDENT_ATTENDANCE_RESET:
+      return {}
+    default:
+      return state
+  }
+}
+
+//STUDENT FEES REDUCER
+export const studentFeesReducer = (state = {}, action) => {
+  switch (action.type) {
+    case STUDENT_FEES_REQUEST:
+      return { loading: true }
+    case STUDENT_FEES_SUCCESS:
+      return { loading: false, success: action.payload }
+    case STUDENT_FEES_FAIL:
+      return { loading: false, error: action.payload }
+    case STUDENT_FEES_RESET:
       return {}
     default:
       return state
