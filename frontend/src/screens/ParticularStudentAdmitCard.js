@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import ReactToPrint from 'react-to-print'
-
+// import './particularprint.css'
+import './Student.css'
 import { AdmitCard } from '../components/AdmitCard'
 
 import Loader from '../components/Loader'
@@ -27,6 +28,10 @@ const ParticularStudentAdmitCard = () => {
     e.preventDefault()
     dispatch(studentSearch(name, classname, rollno))
   }
+  // const style =
+  // Adding media querry..
+  // {`@media print {.contacts{display: none;}}`}
+
   useEffect(() => {
     dispatch({
       type: STUDENT_SEARCH_CLEAR,
@@ -35,6 +40,10 @@ const ParticularStudentAdmitCard = () => {
 
   return (
     <div className='container1'>
+      {/* <style>{`@media print {.contacts{display: none;}}`}</style> */}
+      {/* following is the thing  I have been searching from the morning  */}
+      <style>{`@media print {    @page { size: 110mm 54.5mm; }
+}`}</style>
       <div className='search-form'>
         <h4>Search for Student to pay fees</h4>
 
