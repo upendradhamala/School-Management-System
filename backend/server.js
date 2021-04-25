@@ -8,6 +8,7 @@ import items from './data/Data.js'
 // import classes from './data/ClassData.js'
 import studentRoutes from './routes/studentRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
+import teacherRoutes from './routes/teacherRoutes.js'
 // const items = require('./data/Data')
 // const classes = require('./data/ClassData')
 // d0t
@@ -30,6 +31,8 @@ app.get('/dashboard', (req, res) => {
 
 app.use('/api/students', studentRoutes)
 app.use('/api/login', adminRoutes)
+app.use('/api/teachers', teacherRoutes)
+
 
 app.get('/api/config/cloudinary', (req, res) => {
   res.send(process.env.CLOUDINARY_URL)

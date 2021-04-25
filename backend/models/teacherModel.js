@@ -12,7 +12,7 @@ const teacherSchema = mongoose.Schema(
     },
     teacherId: {
       type: Number,
-      required: true,
+     
     },
     qualification: {
       type: String,

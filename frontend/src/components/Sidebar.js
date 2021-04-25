@@ -1,7 +1,6 @@
 import './Sidebar.css'
 import { useDispatch } from 'react-redux'
-// import USER_LOGOUT from '../constants/userConstants'
-// import logo from "../../Linkssets/logo.png";
+
 import { logout } from '../actions/userActions'
 import { Link } from 'react-router-dom'
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
@@ -15,8 +14,7 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
     <div className={sidebarOpen ? 'sidebar_responsive' : ''} id='sidebar'>
       <div className='sidebar__title'>
         <div className='sidebar__img'>
-          {/* <img src={logo} alt="logo" /> */}
-          {/* <h1></h1> */}
+      
         </div>
         <i
           onClick={() => closeSidebar()}
