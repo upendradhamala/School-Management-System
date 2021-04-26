@@ -3,6 +3,8 @@ import asyncHandler from 'express-async-handler'
 import protect from '../middleware/authMiddleware.js'
 import Teacher from '../models/teacherModel.js'
 import capitalize from '../config/capitalize.js'
+import Dashboard from '../models/dashboardModel.js'
+
 import TeacherSalary from '../models/teacherSalaryModel.js'
 import TeacherAttendance from '../models/teacherAttendanceModel.js'
 
@@ -72,6 +74,13 @@ router.post(
     })
     console.log(new_teacher)
     if (new_teacher) {
+      const total_teachers = (await Teacher.find()).length
+      await Dashboard.findOneAndUpdate(
+        { title: 'Teachers' },
+        { number: total_teachers }
+      )
+      console.log('done')
+      console.log('total number of students', total_teachers)
       res.status(201).json({
         message: 'Teacher registered successfully',
       })

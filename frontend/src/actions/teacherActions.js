@@ -1,5 +1,11 @@
 import axios from 'axios'
 import {
+  TEACHER_DELETE_FAIL,
+  TEACHER_DELETE_REQUEST,
+  TEACHER_DELETE_SUCCESS,
+  TEACHER_LIST_FAIL,
+  TEACHER_LIST_REQUEST,
+  TEACHER_LIST_SUCCESS,
   TEACHER_REGISTER_FAIL,
   TEACHER_REGISTER_REQUEST,
   TEACHER_REGISTER_SUCCESS,
@@ -126,4 +132,48 @@ export const teacherregister = (
   }
 }
 
-//FOLLOWING IS FOR DELETING THE STUDENT
+//FOLLOWING IS FOR DELETING THE Teacher
+
+export const deleteTeacher = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: TEACHER_DELETE_REQUEST,
+    })
+    const { data } = await axios.delete(`/api/teachers/delete/${id}`)
+    dispatch({
+      type: TEACHER_DELETE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: TEACHER_DELETE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+//TEACHER all
+
+export const listTeachers = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: TEACHER_LIST_REQUEST,
+    })
+    const { data } = await axios.get('/api/teachers')
+    dispatch({
+      type: TEACHER_LIST_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: TEACHER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}

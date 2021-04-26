@@ -17,6 +17,7 @@ import StudentClassAdmitCardDeep from './screens/StudentClassAdmitCardDeep'
 import ParticularStudentAdmitCard from './screens/ParticularStudentAdmitCard'
 import TeacherSalary from './screens/TeacherSalary'
 import TeacherRegister from './screens/TeacherRegister'
+import AllTeachers from './screens/AllTeachers'
 
 const App = () => {
   return (
@@ -67,6 +68,7 @@ const App = () => {
           />
           <Route path='/teacher_salary' component={TeacherSalary} exact />
           <Route path='/teacher_register' component={TeacherRegister} exact />
+          <Route path='/teacher_details' component={AllTeachers} exact />
         </Switch>
       </div>
     </Router>
