@@ -136,6 +136,7 @@ router.post(
       staff_name: capitalize(req.params.name),
       staffId: req.params.id,
     })
+    console.log(staff_info)
     console.log(capitalize(req.params.name + ' ' + req.params.id))
 
     console.log('staff info', staff_info)

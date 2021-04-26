@@ -1,13 +1,12 @@
-
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { PaySalary } from '../actions/teacherActions'
-import { TEACHER_SALARY_RESET } from '../constants/teacherConstants'
+import { PaySalary } from '../actions/staffActions'
+import { STAFF_SALARY_RESET } from '../constants/staffConstants'
 import './Student.css'
-const TeacherSalary = ({ history }) => {
-  const [teachername, setTeachername] = useState('')
+const StaffSalary = ({ history }) => {
+  const [staffname, setStaffname] = useState('')
   const [id, setId] = useState('')
   const [valid, setValid] = useState(false)
   const [year, setYear] = useState('')
@@ -20,11 +19,12 @@ const TeacherSalary = ({ history }) => {
     setTimeout(() => {
       setValid(false)
     }, 10000)
-    dispatch(PaySalary(teachername, id, year, month, salary))
-    setTeachername('')
+    dispatch(PaySalary(staffname.trim(), id, year, month, salary))
+    setStaffname('')
     setId('')
     setYear('')
     setSalary('')
+    setMonth('')
   }
   const userLogin = useSelector((state) => state.userLogin)
   // const userLogin = useSelector((state) => state.userLogin)
@@ -32,12 +32,12 @@ const TeacherSalary = ({ history }) => {
   const { userCred } = userLogin
 
   // const studentRegister = useSelector((state) => state.studentRegister)
-  const teacherSalary = useSelector((state) => state.teacherSalary)
+  const staffSalary = useSelector((state) => state.staffSalary)
 
-  const { loading, success, error } = teacherSalary
+  const { loading, success, error } = staffSalary
   useEffect(() => {
     dispatch({
-      type: TEACHER_SALARY_RESET,
+      type: STAFF_SALARY_RESET,
     })
     if (!userCred) {
       history.push('/login')
@@ -46,7 +46,7 @@ const TeacherSalary = ({ history }) => {
   return (
     <div className='container1' style={{ marginTop: '10px' }}>
       <div className='outer-layout'>
-        <h1>Teacher Salary Section</h1>
+        <h1>Staff Salary Section</h1>
         {valid && success && (
           <Message variant='success' message={success.message} />
         )}
@@ -58,16 +58,16 @@ const TeacherSalary = ({ history }) => {
           <form onSubmit={submitHandler}>
             <div className='form-inner'>
               <div className='form-control'>
-                <label for='name'>Teacher Name</label>
+                <label for='name'>Staff Name</label>
                 <input
                   type='text'
-                  value={teachername}
-                  onChange={(e) => setTeachername(e.target.value)}
+                  value={staffname}
+                  onChange={(e) => setStaffname(e.target.value)}
                   required
                 />
               </div>
               <div className='form-control'>
-                <label for='name'>Teacher ID</label>
+                <label for='name'>Staff ID</label>
                 <input
                   type='number'
                   value={id}
@@ -131,4 +131,4 @@ const TeacherSalary = ({ history }) => {
   )
 }
 
-export default TeacherSalary
+export default StaffSalary

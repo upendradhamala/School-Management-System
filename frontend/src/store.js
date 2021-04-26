@@ -19,6 +19,12 @@ import {
   teacherDeleteReducer,
   teacherListReducer,
 } from './reducers/teacherReducers'
+import {
+  staffSalaryReducer,
+  staffRegisterReducer,
+  staffDeleteReducer,
+  staffListReducer,
+} from './reducers/staffReducers'
 const reducer = combineReducers({
   studentList: studentListReducer,
   studentClassList: studentClassListReducer,
@@ -32,6 +38,10 @@ const reducer = combineReducers({
   teacherRegister: teacherRegisterReducer,
   teacherDelete: teacherDeleteReducer,
   teacherList: teacherListReducer,
+  staffSalary: staffSalaryReducer,
+  staffRegister: staffRegisterReducer,
+  staffDelete: staffDeleteReducer,
+  staffList: staffListReducer,
 })
 const userInfoFromStorage = localStorage.getItem('userCred')
   ? JSON.parse(localStorage.getItem('userCred'))
