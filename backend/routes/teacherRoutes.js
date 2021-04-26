@@ -114,4 +114,69 @@ router.delete(
 )
 
 //following route is for paying the fees of teachers
+
+router.post(
+  '/fees/:name/:id',
+  //the protect used here is used for getting the id of the admin who registered the teacher
+
+  protect,
+  asyncHandler(async (req, res) => {
+    const { salaryForTheYear, salaryForTheMonth, salaryAmount } = req.body
+    console.log(req.body)
+    // const teacher_info =
+    const teacher_info = await Teacher.findOne({
+      teacher_name: capitalize(req.params.name),
+      teacherId: req.params.id,
+    })
+    console.log(capitalize(req.params.name + ' ' + req.params.id))
+
+    console.log('teacher info', teacher_info)
+    if (teacher_info) {
+      const admin = req.user.name
+
+      // console.log(admin)
+
+      // console.log('teacher id is-', teacherId)
+      const teachername = capitalize(req.params.name)
+      const monthname = capitalize(salaryForTheMonth)
+      const new_teacher = await TeacherSalary.create({
+        admin,
+        teacher_name: teachername,
+        teacherId: req.params.id,
+
+        salaryForTheYear,
+        salaryForTheMonth: monthname,
+        salaryAmount,
+      })
+      console.log(new_teacher)
+      if (new_teacher) {
+        res.status(201).json({
+          message: 'Teacher salary paid successfully',
+        })
+        console.log('paid successfully')
+      } else {
+        res.status(400)
+        console.log(error)
+        throw new Error('Unable to pay the salary')
+      }
+    } else {
+      res.status(400)
+      throw new Error('Teacher not found')
+    }
+  })
+)
+//router for getting all the teachers
+// router.get(
+//   '/',
+//   asyncHandler(async (req, res) => {
+//     const teachers = await Teacher.find({})
+//     if (teachers.length > 0) {
+//       res.json(teachers)
+//     } else {
+//       res.status(500)
+//       throw new Error('No Teachers found')
+//     }
+//   })
+// )
+
 export default router

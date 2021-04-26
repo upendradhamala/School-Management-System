@@ -13,11 +13,11 @@ const teacherSalarySchema = mongoose.Schema({
     required: true,
   },
   salaryForTheYear: {
-    type: Date,
+    type: String,
     required: true,
   },
   salaryForTheMonth: {
-    type: Date,
+    type: String,
     required: true,
   },
   salaryAmount: {
