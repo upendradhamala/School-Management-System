@@ -93,7 +93,7 @@ router.post(
     const registered_by = req.user.name
 
     console.log(registered_by)
-    const previous_dues = 3333
+    const previous_dues = 0
     // const roll_no = 3
     console.log('roll no is', roll_no)
     const studentname = capitalize(student_name)
@@ -120,7 +120,7 @@ router.post(
         { title: 'Students' },
         { number: total_students }
       )
-      console.log("done")
+      console.log('done')
       console.log('total number of students', total_students)
       res.status(201).json({
         message: 'Student registered successfully',

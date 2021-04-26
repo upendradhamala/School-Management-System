@@ -35,7 +35,7 @@ const AllTeachers = ({}) => {
   return (
     <div className='container3'>
       <div className='outer'>
-        <input type='text' placeholder='Search for student...' />
+        <input type='text' placeholder='Search for teacher...' />
         <span className='search-icon' onClick={searchSubmit}>
           <i className='fas fa-search'></i>
         </span>
