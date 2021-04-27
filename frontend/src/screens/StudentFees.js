@@ -37,7 +37,7 @@ const StudentFees = () => {
   } = studentFees
   const formSubmit = async (e) => {
     e.preventDefault()
-    dispatch(studentSearch(name, classname, rollno))
+    dispatch(studentSearch(name.trim(), classname, rollno))
   }
   const submitHandler = (e) => {
     e.preventDefault()
@@ -63,10 +63,10 @@ const StudentFees = () => {
     setTimeout(() => {
       setOk(false)
     }, 10000)
-    setName('')
-    setClassname('')
-    setRollno('')
-    setMonthlyfees('')
+    // setName('')
+    // setClassname('')
+    // setRollno('')
+    // setMonthlyfees('')
 
     dispatch({
       type: STUDENT_SEARCH_CLEAR,

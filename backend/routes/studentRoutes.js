@@ -232,6 +232,13 @@ router.post(
         miscellaneous,
       })
       if (fees_submitted) {
+      
+        
+        console.log('total_Fees', total_Fees)
+        await Dashboard.findOneAndUpdate(
+          { title: 'Income' },
+          { number: total_Fees }
+        )
         res.status(201).json({ message: 'Fees Paid successfully' })
         console.log('fees success')
       } else {

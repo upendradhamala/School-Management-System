@@ -20,7 +20,7 @@ const TeacherSalary = ({ history }) => {
     setTimeout(() => {
       setValid(false)
     }, 10000)
-    dispatch(PaySalary(teachername, id, year, month, salary))
+    dispatch(PaySalary(teachername.trim(), id, year, month, salary))
     setTeachername('')
     setId('')
     setYear('')
