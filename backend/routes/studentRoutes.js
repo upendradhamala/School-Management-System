@@ -186,6 +186,11 @@ router.delete(
     const student = await Student.findById(req.params.id)
     if (student) {
       await student.remove()
+      const total_students = (await Student.find()).length
+      await Dashboard.findOneAndUpdate(
+        { title: 'Students' },
+        { number: total_students }
+      )
       res.json({ message: 'Student removed' })
     } else {
       res.status(404)

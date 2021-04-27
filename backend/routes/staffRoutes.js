@@ -113,6 +113,11 @@ router.delete(
     const staff = await NonTeachingStaff.findOne({ staffId: req.params.id })
     if (staff) {
       await staff.remove()
+      const total_staffs = (await NonTeachingStaff.find()).length
+      await Dashboard.findOneAndUpdate(
+        { title: 'Working Staffs' },
+        { number: total_staffs }
+      )
       res.json({ message: 'Staff Deleted successfully' })
     } else {
       res.status(404)

@@ -114,6 +114,11 @@ router.delete(
     const teacher = await Teacher.findOne({ teacherId: req.params.id })
     if (teacher) {
       await teacher.remove()
+      const total_teachers = (await Teacher.find()).length
+      await Dashboard.findOneAndUpdate(
+        { title: 'Teachers' },
+        { number: total_teachers }
+      )
       res.json({ message: 'Teacher Deleted successfully' })
     } else {
       res.status(404)
