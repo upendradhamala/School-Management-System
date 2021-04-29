@@ -237,12 +237,31 @@ router.post(
         miscellaneous,
       })
       if (fees_submitted) {
-      
-        
-        console.log('total_Fees', total_Fees)
+        const total_Fees = await StudentFees.find()
+          .select(
+            'monthly_fees hostel_fees laboratory_fees computer_fees exam_fees miscellaneous '
+          )
+          .select('-_id')
+        var total_Fees1 = 0
+        total_Fees.map(
+          (fee) =>
+            (total_Fees1 =
+              total_Fees1 +
+              fee.monthly_fees +
+              fee.hostel_fees +
+              fee.laboratory_fees +
+              fee.computer_fees +
+              fee.exam_fees +
+              fee.miscellaneous)
+          // return total_Fees
+        )
+
+        // console.log('total fees are-', total_Fees)
+
+        // console.log('total_Fees', total_Fees)
         await Dashboard.findOneAndUpdate(
           { title: 'Income' },
-          { number: total_Fees }
+          { number: total_Fees1 }
         )
         res.status(201).json({ message: 'Fees Paid successfully' })
         console.log('fees success')
