@@ -572,3 +572,61 @@ th, td {
       place-items: center;
       place-content: center;
   }
+
+  .income-button {
+      display:grid;
+      margin:200px;
+      margin-bottom: 10px;
+      margin-top: 50px;
+      gap:10px;
+place-content: center;      
+/* place-items: center; */
+
+
+  }
+
+
+  .income-button .link{
+      /* text-align: left; */
+      padding:10px;
+      background: cyan;
+      border:none;
+      cursor:pointer;
+      font-size: 15px;
+      /* color:white; */
+
+
+  }
+
+  .income-button .link:hover{
+      background: darkcyan;
+      color:white;
+      
+  }
+  .income-h1{
+   
+        /* text-align: center,
+        background: 'red',
+        margin: '0 100px 0 100px', */
+        margin:auto;
+        margin:0 100px 0 100px;
+        text-align: center;
+        /* text-decoration: indianred; */
+        background: rgb(102, 32, 7);
+        color:white;
+        text-transform: capitalize;
+        /* border: 2px solid rgb(21, 0, 78); */
+        /* overflow: auto; */
+        
+     
+  }
+
+
+.incomeform{
+    border:2px solid red;
+    margin: auto;
+}
+
+/* select option:hover{
+    cursor: pointer;
+} */

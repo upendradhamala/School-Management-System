@@ -4,7 +4,7 @@ import protect from '../middleware/authMiddleware.js'
 import Teacher from '../models/teacherModel.js'
 import capitalize from '../config/capitalize.js'
 import Dashboard from '../models/dashboardModel.js'
-
+import StudentFees from '../models/studentFeesModel.js'
 import TeacherSalary from '../models/teacherSalaryModel.js'
 import TeacherAttendance from '../models/teacherAttendanceModel.js'
 import NonTeachingStaffSalary from '../models/nonTeachingStaffSalary.js'
@@ -169,20 +169,13 @@ router.post(
           .select('-_id')
         console.log('Fees', Fees)
         var total_Fees = 0
-        // for (i = 0; i < Fees.length; i++) {
-        //   total_Fees = Fees[i]
-        // }
+
         var total_Fees = 0
-        Fees.map(
-          (fee) => (total_Fees = total_Fees + fee.salaryAmount)
-          // return total_Fees
-        )
+        Fees.map((fee) => (total_Fees = total_Fees + fee.salaryAmount))
         const Fees1 = await NonTeachingStaffSalary.find()
           .select('salaryAmount')
           .select('-_id')
-        // for (i = 0; i < Fees.length; i++) {
-        //   total_Fees = Fees[i]
-        // }
+
         var total_Fees1 = 0
         Fees1.map(
           (fee) => (total_Fees1 = total_Fees1 + fee.salaryAmount)
@@ -207,18 +200,55 @@ router.post(
     }
   })
 )
-//router for getting all the teachers
-// router.get(
-//   '/',
-//   asyncHandler(async (req, res) => {
-//     const teachers = await Teacher.find({})
-//     if (teachers.length > 0) {
-//       res.json(teachers)
-//     } else {
-//       res.status(500)
-//       throw new Error('No Teachers found')
-//     }
-//   })
-// )
+
+//for getting information regarding income
+
+//all income generated till now
+router.get(
+  '/allincome',
+  asyncHandler(async (req, res) => {
+    const income = await StudentFees.find({})
+    if (income.length > 0) {
+      res.json(income)
+    } else {
+      res.status(500)
+      throw new Error('No Income made till date')
+    }
+  })
+)
+
+//particular year
+
+router.get(
+  '/allincome/:year',
+  asyncHandler(async (req, res) => {
+    const income = await StudentFees.find({ year: req.params.year })
+    if (income.length > 0) {
+      res.json(income)
+    } else {
+      res.status(500)
+      throw new Error(`No Income made for year ${req.params.year}`)
+    }
+  })
+)
+
+//paritcular month of particular year
+router.get(
+  '/allincome/:year/:month',
+  asyncHandler(async (req, res) => {
+    const income = await StudentFees.find({
+      year: req.params.year,
+      month_name: capitalize(req.params.month),
+    })
+    if (income.length > 0) {
+      res.json(income)
+    } else {
+      res.status(500)
+      throw new Error(
+        `No Income made for month ${req.params.month} of year ${req.params.year}`
+      )
+    }
+  })
+)
 
 export default router

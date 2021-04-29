@@ -17,11 +17,12 @@ import StudentClassAdmitCardDeep from './screens/StudentClassAdmitCardDeep'
 import ParticularStudentAdmitCard from './screens/ParticularStudentAdmitCard'
 import TeacherSalary from './screens/TeacherSalary'
 import StaffSalary from './screens/StaffSalary'
-
+import ImcomeScreen from './screens/IncomeScreen'
 import TeacherRegister from './screens/TeacherRegister'
 import AllTeachers from './screens/AllTeachers'
 import AllStaffs from './screens/AllStaffs'
 import StaffRegister from './screens/StaffRegister'
+import IncomeScreen from './screens/IncomeScreen'
 
 const App = () => {
   return (
@@ -88,6 +89,7 @@ const App = () => {
             component={StaffSalary}
             exact
           />
+          <Route path='/income' component={IncomeScreen} exact />
         </Switch>
       </div>
     </Router>
