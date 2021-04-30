@@ -7,7 +7,7 @@ This is a MERN stack website which can be used for managing the school. It has a
 Clone the repo
 
 ```bash
-git clone [https://github.com/upendradhamala/School-Management-System.git]
+git clone https://github.com/upendradhamala/School-Management-System.git
 ```
 
 ### Getting Started
@@ -55,7 +55,7 @@ npm run dev
 ### `LIVE SITE`
 
 ```bash
-[School Management System](https://schoolmanagementsystemwebapp.herokuapp.com/)
+https://schoolmanagementsystemwebapp.herokuapp.com/
 
 ```
 
