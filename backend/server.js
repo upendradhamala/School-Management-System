@@ -11,6 +11,7 @@ import studentRoutes from './routes/studentRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
 import teacherRoutes from './routes/teacherRoutes.js'
 import staffRoutes from './routes/staffRoutes.js'
+import path from 'path'
 // const items = require('./data/Data')
 // const classes = require('./data/ClassData')
 // d0t
