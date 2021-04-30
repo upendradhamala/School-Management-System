@@ -556,6 +556,9 @@ th, td {
 
 @media print {
     @page { size: 110mm 54.5mm; }
+    .printcmd{
+        display:none;
+    }
   }
 
 
@@ -635,8 +638,28 @@ place-content: center;
     /* display: inline; */
     /* border:2px solid  */
     margin:100px;
+    background: rgb(245, 241, 238);
     display: grid;
     margin-top: 0;
     overflow: auto;
+        /* border:2px solid black; */
+
     margin-bottom: 5px;
+}
+.outerIncome{
+    /* border:2px solid black; */
+    padding:10px;
+
+}
+.innerIncome{
+    display:grid;
+    grid-template-columns: 0.1fr 0.5fr 1fr;
+    grid-template-rows:  1fr;
+    padding:10px;
+    border-bottom: 2px solid black;
+   
+
+}
+.allIncome p{
+    /* padding:40px; */
 }

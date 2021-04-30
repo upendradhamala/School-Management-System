@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 // import Message from '../components/Message'
 import NepaliDate from 'nepali-date-converter'
 import Income from '../components/Income'
+import ReactToPrint from 'react-to-print'
+
 import Message from '../components/Message'
 // import link, { Link } from 'react-router-dom'
 import {
@@ -13,6 +15,8 @@ import {
 } from '../actions/miscellaneousActions'
 import { ALL_INCOME_RESET } from '../constants/miscellaneousConstants'
 const IncomeScreen = () => {
+  const componentRef = useRef()
+
   const dispatch = useDispatch()
   const [particularmonth, setParticularmonth] = useState(false)
   const [
@@ -27,6 +31,7 @@ const IncomeScreen = () => {
   const [year, setYear] = useState('')
   const [particularyear, setParticularyear] = useState(false)
   // const [data, setData] = useState([])
+  const [show, setShow] = useState(false)
   const Year = () => {
     setParticularmonth(false)
     setParticularmonthofparticularyear(false)
@@ -61,6 +66,10 @@ const IncomeScreen = () => {
     dispatch(alltillNow())
   }
   var i = 1
+  const print = () => {
+    window.print()
+    setShow(true)
+  }
   const both = () => {
     dispatch({ type: ALL_INCOME_RESET })
 
@@ -85,6 +94,8 @@ const IncomeScreen = () => {
   }
   return (
     <div className='container1'>
+            <style>{`@media print {    @page { size: 300mm 140.5mm;  }}`}</style>
+
       <h2 className='income-h1'> Income statements</h2>
       <div className='income-button'>
         <button onClick={All} className='link'>
@@ -160,53 +171,43 @@ const IncomeScreen = () => {
       )}
 
       {/* {console.log(error)} */}
-      <div className='allincomedetails' style={{ background: 'green' }}>
+      <div className='allincomedetails'>
         {loading ? (
           <Loader />
         ) : allincome ? (
-          // <table>
-          //   <thead>
-          //     <tr>
-          //       <th>SN</th>
-          //       <th>Date</th>
-          //       <th>Particulars</th>
-          //     </tr>
-          //   </thead>
-          //   <tbody>
-          allincome.map((value) => (
-            <Income
-              _id={value._id}
-              i={i++}
-              createdAt={value.createdAt}
-              monthly_fees={value.monthly_fees}
-              hostel_fees={value.hostel_fees}
-              laboratory_fees={value.laboratory_fees}
-              computer_fees={value.computer_fees}
-              exam_fees={value.exam_fees}
-              miscellaneous={value.miscellaneous}
-              student_name={value.student_name}
-            />
-            // <tr key={value._id}>
-            //   <td>{i++}</td>
-
-            //   <td>
-            //     {new NepaliDate(new Date(value.createdAt)).format(
-            //       'YYYY-MM-DD'
-            //     )}
-            //   </td>
-            //   <td>
-            //     Total Fees collected Rs{' '}
-            //     {value.monthly_fees +
-            //       value.hostel_fees +
-            //       value.laboratory_fees +
-            //       value.computer_fees +
-            //       value.exam_fees +
-            //       value.miscellaneous}{' '}
-            //     from {value.student_name}
-            //   </td>
-            // </tr>
-            // {}
-          ))
+          <div className='outerIncome'>
+            <div className='innerIncome'>
+              <p>SN</p>
+              <p>Date</p>
+              <p>Particulars</p>
+            </div>
+            {allincome.map((value) => (
+              <div className=''>
+                <Income
+                  _id={value._id}
+                  i={i++}
+                  createdAt={value.createdAt}
+                  monthly_fees={value.monthly_fees}
+                  hostel_fees={value.hostel_fees}
+                  laboratory_fees={value.laboratory_fees}
+                  computer_fees={value.computer_fees}
+                  exam_fees={value.exam_fees}
+                  miscellaneous={value.miscellaneous}
+                  student_name={value.student_name}
+                  ref={componentRef}
+                />
+              </div>
+            ))}
+            <button onClick={print} className='printcmd'>
+              Print
+            </button>
+            {/* <ReactToPrint
+              trigger={() => (
+                <button className='printcmd'>Print this out!</button>
+              )}
+              content={() => componentRef.current}
+            /> */}
+          </div>
         ) : (
           /* <table>
                 <thead>

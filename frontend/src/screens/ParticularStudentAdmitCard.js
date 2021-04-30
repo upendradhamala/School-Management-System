@@ -104,15 +104,13 @@ const ParticularStudentAdmitCard = () => {
               image={student.image}
               ref={componentRef}
             />
-            <ReactToPrint
-              trigger={() => (
-                <button className='printcmd'>Print this out!</button>
-              )}
-              content={() => componentRef.current}
-            />
           </div>
         )}
       </div>
+      <ReactToPrint
+        trigger={() => <button className='printcmd'>Print this out!</button>}
+        content={() => componentRef.current}
+      />
     </div>
   )
 }
