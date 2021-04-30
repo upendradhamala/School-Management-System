@@ -7,7 +7,7 @@ This is a MERN stack website which can be used for managing the school. It has a
 Clone the repo
 
 ```bash
-git clone [https://github.com/upendradhamala/School-Management-System.git] (https://github.com/upendradhamala/School-Management-System.git)
+git clone [https://github.com/upendradhamala/School-Management-System.git]
 ```
 
 ### Getting Started
@@ -18,16 +18,13 @@ Go to the root folder and install the node_modules by using the command-
 npm install
 ```
 
-Go to the frontend folder by command
+Go to the frontend folder by command cd frontend and then do-
 
-````bash
-cd frontend```
- and then do
 ```bash
 npm install
-````
+```
 
-### `Env Variables`
+### `ENV Variables`
 
 Create a .env file in the root and add the following
 
@@ -45,8 +42,9 @@ CLOUDINARY_UPLOAD_PRESET = "your cloudinary preset "
 ```
 
 ### `Running`
-``bash 
-Go to the root folder 
-npm run dev
 
+``bash
+Go to the root folder
+npm run dev
 ```
+
