@@ -12,13 +12,13 @@ git clone [https://github.com/upendradhamala/School-Management-System.git]
 
 ### Getting Started
 
-Go to the root folder and install the node_modules by using the command-
+Go to the root folder and install the backend dependencies by using the command-
 
 ```bash
 npm install
 ```
 
-Go to the frontend folder by command cd frontend and then do-
+Go to the frontend folder by command cd frontend and then install frontend dependecies using the command-
 
 ```bash
 npm install
@@ -43,8 +43,8 @@ CLOUDINARY_UPLOAD_PRESET = "your cloudinary preset "
 
 ### `Running`
 
-``bash
+```bash
 Go to the root folder
 npm run dev
-```
 
+```
