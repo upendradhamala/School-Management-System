@@ -36,7 +36,6 @@ JWT_SECRET="Anything you like"
 CLOUD_NAME="your cloudinary cloud name"
 API_KEY="your cloudinary api key"
 API_SECRET="your cloudinary secret key"
-API_Environment_variable=CLOUDINARY_URL="your cloudinary environment variable"
 CLOUDINARY_URL ="your cloudinary url"
 CLOUDINARY_UPLOAD_PRESET = "your cloudinary preset "
 ```
@@ -47,4 +46,22 @@ CLOUDINARY_UPLOAD_PRESET = "your cloudinary preset "
 Go to the root folder
 npm run dev
 
+```
+
+### `Homepage`
+
+[![Screenshot-from-2021-04-30-16-59-15.png](https://i.postimg.cc/jjHs8psH/Screenshot-from-2021-04-30-16-59-15.png)](https://postimg.cc/67QJq14q)
+
+### `LIVE SITE`
+
+```bash
+[School Management System](https://schoolmanagementsystemwebapp.herokuapp.com/)
+
+```
+
+### `LOGIN AS ADMIN`
+
+```bash
+Login email="admin1@example.com"
+Login password="123456"
 ```
