@@ -45,7 +45,8 @@ const Main = () => {
           </div>
         )}
       </div>
-      {/* <Footer /> */}
+      
+      <Footer />
     </main>
   )
 }
