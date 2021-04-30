@@ -24,6 +24,7 @@ import AllStaffs from './screens/AllStaffs'
 import StaffRegister from './screens/StaffRegister'
 import IncomeScreen from './screens/IncomeScreen'
 import ExpenseScreen from './screens/ExpenseScreen'
+import underConstruction from './components/underConstruction'
 // import ExpenseScreen from './screens/ExpenseScreen'
 
 const App = () => {
@@ -43,7 +44,17 @@ const App = () => {
           />
           <Route
             path='/student-attendance'
-            component={StudentAttendance}
+            component={underConstruction}
+            exact
+          />
+           <Route
+            path='/teacher_attendance'
+            component={underConstruction}
+            exact
+          />
+           <Route
+            path='/non-teaching_staff_attendance'
+            component={underConstruction}
             exact
           />
           <Route
@@ -93,7 +104,6 @@ const App = () => {
           />
           <Route path='/income' component={IncomeScreen} exact />
           <Route path='/salary' component={ExpenseScreen} exact />
-
         </Switch>
       </div>
     </Router>
