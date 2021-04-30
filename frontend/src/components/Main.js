@@ -45,8 +45,8 @@ const Main = () => {
           </div>
         )}
       </div>
-      
-      <Footer />
+
+      {!loading && <Footer />}
     </main>
   )
 }

@@ -7,9 +7,9 @@
     padding:4px;
     padding-bottom: 0px;
     bottom:0px;
-    background: rgb(25, 0, 255);
+    background: rgb(0, 110, 255);
     color:white;
-    /* position: absolute; */
+    /* position: fixed; */
 }
 .emoji{
     /* display: inline-block; */
