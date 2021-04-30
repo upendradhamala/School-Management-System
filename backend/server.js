@@ -1,5 +1,7 @@
 // following is the es modules declaration style in nodejs
 import express from 'express'
+import path from 'path'
+
 // import products from "./data/"
 // const express = require('express')
 import dotenv from 'dotenv'
@@ -11,7 +13,6 @@ import studentRoutes from './routes/studentRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
 import teacherRoutes from './routes/teacherRoutes.js'
 import staffRoutes from './routes/staffRoutes.js'
-import path from 'path'
 // const items = require('./data/Data')
 // const classes = require('./data/ClassData')
 // d0t

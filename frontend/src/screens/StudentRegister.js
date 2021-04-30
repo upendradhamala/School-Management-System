@@ -27,6 +27,8 @@ const StudentRegister = ({ history }) => {
     const { data: CLOUDINARY_UPLOAD_PRESET } = await axios.get(
       '/api/config/cloudinarypreset'
     )
+    console.log(CLOUDINARY_UPLOAD_PRESET)
+    console.log(CLOUDINARY_URL)
     setTime(true)
     setTimeout(() => {
       setTime(false)
@@ -197,6 +199,7 @@ const StudentRegister = ({ history }) => {
                   required
                 />
               </div>
+              {console.log('image url is', image)}
               <div className='form-control'>
                 <label htmlFor='registration-fees'>Registration Fees</label>
                 <input
