@@ -55,7 +55,7 @@ npm run dev
 ### `LIVE SITE`
 
 ```bash
-https://schoolmanagementsystemwebapp.herokuapp.com/
+https://manageschool1.herokuapp.com/
 
 ```
 
