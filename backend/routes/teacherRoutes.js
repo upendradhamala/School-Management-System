@@ -240,7 +240,10 @@ router.get(
       year: req.params.year,
       month_name: capitalize(req.params.month),
     })
+    console.log('hello')
+    console.log(req.params.year + req.params.month)
     if (income.length > 0) {
+      // res.status(201)
       res.json(income)
     } else {
       res.status(500)

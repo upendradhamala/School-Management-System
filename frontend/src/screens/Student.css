@@ -630,3 +630,13 @@ place-content: center;
 /* select option:hover{
     cursor: pointer;
 } */
+
+.allincomedetails{
+    /* display: inline; */
+    /* border:2px solid  */
+    margin:100px;
+    display: grid;
+    margin-top: 0;
+    overflow: auto;
+    margin-bottom: 5px;
+}
