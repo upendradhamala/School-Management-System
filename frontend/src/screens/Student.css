@@ -533,7 +533,16 @@ th, td {
     color:white;
     cursor: pointer;
     margin-bottom: 10px;
+    text-align: center;
+    margin:auto;
     /* margin: auto; */
+
+}
+.printCMD{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
 
 }
 .examNumber{
