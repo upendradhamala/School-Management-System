@@ -1,6 +1,6 @@
 # School Management System
 
-This is a MERN stack website which can be used for managing the school. It has almost all features and some few are in development phase.
+This is a MERN stack website which can be used for managing the school. It has almost all features and few are in development phase.
 
 ## Usage
 
