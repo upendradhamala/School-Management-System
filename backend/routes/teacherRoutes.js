@@ -254,4 +254,69 @@ router.get(
   })
 )
 
+//the following is for the salary given to the staffs and the  teachers
+
+router.get(
+  '/allsalaries',
+  asyncHandler(async (req, res) => {
+    const salary = await TeacherSalary.find({})
+    const staff_salary = await NonTeachingStaffSalary.find({})
+    if (salary.length > 0 || staff_salary.length > 0) {
+      var new_salary = salary.concat(staff_salary)
+      res.json(new_salary)
+    } else {
+      res.status(500)
+      throw new Error('No salary given till date')
+    }
+  })
+)
+
+//particular year
+
+router.get(
+  '/allsalary/:year',
+  asyncHandler(async (req, res) => {
+    const salary = await TeacherSalary.find({
+      salaryForTheYear: req.params.year,
+    })
+    const staff_salary = await NonTeachingStaffSalary.find({
+      salaryForTheYear: req.params.year,
+    })
+    console.log(salary)
+    console.log('staffsalary', staff_salary)
+    if (salary.length > 0 || staff_salary.length > 0) {
+      var new_salary = salary.concat(staff_salary)
+      res.json(new_salary)
+    } else {
+      res.status(500)
+      throw new Error(`No salary made for year ${req.params.year}`)
+    }
+  })
+)
+
+//paritcular month of particular year
+router.get(
+  '/allsalary/:year/:month',
+  asyncHandler(async (req, res) => {
+    const salary = await TeacherSalary.find({
+      salaryForTheYear: req.params.year,
+      salaryForTheMonth: capitalize(req.params.month),
+    })
+    console.log('hello')
+    const staff_salary = await NonTeachingStaffSalary.find({
+      salaryForTheYear: req.params.year,
+      salaryForTheMonth: capitalize(req.params.month),
+    })
+    if (salary.length > 0 || staff_salary.length > 0) {
+      var new_salary = salary.concat(staff_salary)
+      res.json(new_salary)
+    } else {
+      res.status(500)
+      throw new Error(
+        `No salary made for month ${req.params.month} of year ${req.params.year}`
+      )
+    }
+  })
+)
+
 export default router
