@@ -23,6 +23,8 @@ import AllTeachers from './screens/AllTeachers'
 import AllStaffs from './screens/AllStaffs'
 import StaffRegister from './screens/StaffRegister'
 import IncomeScreen from './screens/IncomeScreen'
+import ExpenseScreen from './screens/ExpenseScreen'
+// import ExpenseScreen from './screens/ExpenseScreen'
 
 const App = () => {
   return (
@@ -90,6 +92,8 @@ const App = () => {
             exact
           />
           <Route path='/income' component={IncomeScreen} exact />
+          <Route path='/salary' component={ExpenseScreen} exact />
+
         </Switch>
       </div>
     </Router>
