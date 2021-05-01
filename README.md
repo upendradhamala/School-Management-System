@@ -33,9 +33,6 @@ NODE_ENV=development
 PORT=5000
 MONGO_URI="Your mongo uri"
 JWT_SECRET="Anything you like"
-CLOUD_NAME="your cloudinary cloud name"
-API_KEY="your cloudinary api key"
-API_SECRET="your cloudinary secret key"
 CLOUDINARY_URL ="your cloudinary url"
 CLOUDINARY_UPLOAD_PRESET = "your cloudinary preset "
 ```
