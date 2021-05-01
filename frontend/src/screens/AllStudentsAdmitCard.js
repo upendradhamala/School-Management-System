@@ -40,8 +40,10 @@ const AllStudentsAdmitCard = () => {
           <button type='submit'>Enter</button>
         </form> */}
       </div>
-      {loading && <Loader />}
-      {students &&
+      {loading ? (
+        <Loader />
+      ) : (
+        students &&
         students.map((student) => (
           <div key={student._id} className='arrange'>
             <AdmitCard
@@ -52,7 +54,8 @@ const AllStudentsAdmitCard = () => {
               image={student.image}
             />
           </div>
-        ))}
+        ))
+      )}
       {students && (
         <div className='la'>
           <button onClick={Print} className='printcmd'>

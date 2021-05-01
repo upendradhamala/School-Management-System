@@ -42,7 +42,7 @@ const IncomeScreen = () => {
     var newarray = []
     const reducer = (accumulator, currentValue) => accumulator + currentValue
 
-    console.log('value of the array is', arr)
+    
     arr.map((data) =>
       newarray.push(
         data.monthly_fees,
@@ -53,7 +53,7 @@ const IncomeScreen = () => {
         data.miscellaneous
       )
     )
-    console.log('value of the array is', newarray)
+    
     return newarray.reduce(reducer)
     // console.log('total income', totalincome)
   }
@@ -94,7 +94,7 @@ const IncomeScreen = () => {
   }
   return (
     <div className='container1'>
-            <style>{`@media print {    @page { size: 300mm 140.5mm;  }}`}</style>
+      <style>{`@media print {    @page { size: 300mm 140.5mm;  }}`}</style>
 
       <h2 className='income-h1'> Income statements</h2>
       <div className='income-button'>

@@ -27,8 +27,7 @@ const StudentRegister = ({ history }) => {
     const { data: CLOUDINARY_UPLOAD_PRESET } = await axios.get(
       '/api/config/cloudinarypreset'
     )
-    console.log(CLOUDINARY_UPLOAD_PRESET)
-    console.log(CLOUDINARY_URL)
+   
     setTime(true)
     setTimeout(() => {
       setTime(false)

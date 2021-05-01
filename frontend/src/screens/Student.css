@@ -3,7 +3,7 @@
 
     /* background: url("student.jpg"); */
     padding:10px;
-    overflow-y: auto;
+    overflow: auto;
     /* background: chocolate; */
     /* display: grid; */
     /* place-content: center; */
@@ -432,6 +432,20 @@ th, td {
         background: darkorange;
         color:black;
     }
+    .admitCardouter{
+        overflow:auto;
+
+
+        
+        /* display: block; */
+        
+        /* border:2px  solid red; */
+
+
+
+
+
+    }
 
     /* for admit card */
     /* .container5{
@@ -446,6 +460,7 @@ th, td {
     'middle middle middle'
     'bottom bottom bottom';
     grid-gap: 10px;
+    overflow:auto;
     background-color: #d8e1e9;
     padding: 10px;
     width:600px;
@@ -504,6 +519,7 @@ th, td {
     margin-bottom:50px;
     /* border: 2px solid red; */
     display: grid;
+    overflow:auto;
     place-content: center;
     place-items: center;
     /* text-align: center; */
