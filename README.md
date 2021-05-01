@@ -56,7 +56,7 @@ https://manageschool1.herokuapp.com/
 
 ```
 
-### `LOGIN AS ADMIN`
+### `LOGIN AS ADMIN AND SEE EVERYTHING`
 
 ```bash
 Login email="admin1@example.com"
