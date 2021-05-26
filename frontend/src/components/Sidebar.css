@@ -1,12 +1,15 @@
 #sidebar {
     background: #56a50c;
     grid-area: sidebar;
+    /* overflow-y: scroll; */
     overflow-y: auto;
     padding: 20px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
+    height:100vh;
   }
-  
+  #sidebar{
+  }
   .sidebar__title {
     display: flex;
     justify-content: space-between;
@@ -120,7 +123,8 @@
     z-index: 9999 !important;
     left: 0 !important;
     position: absolute;
-    overflow: auto;
+    /* overflow: auto; */
+    overflow-y: scroll;
     /* overflow-y: scroll; */
   }
   
