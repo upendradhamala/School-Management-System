@@ -132,18 +132,20 @@ const StudentDeepAttendance = ({ match }) => {
             </tbody>
           </table>
         )}
-        <button
-          onClick={submitAttendance}
-          style={{ marginTop: '10px', maxWidth: '30%', display: 'block' }}
-          disabled={studentlist.length > 0}
-          className={
-            studentlist.length > 0
-              ? 'btn-register disable'
-              : 'btn-register enable'
-          }
-        >
-          Submit
-        </button>
+        {studentsfinal && (
+          <button
+            onClick={submitAttendance}
+            style={{ marginTop: '10px', maxWidth: '30%', display: 'block' }}
+            disabled={studentlist.length > 0}
+            className={
+              studentlist.length > 0
+                ? 'btn-register disable'
+                : 'btn-register enable'
+            }
+          >
+            Submit
+          </button>
+        )}
       </div>
     </div>
   )
