@@ -5,10 +5,12 @@ import { STUDENT_ATTENDANCE_RESET } from '../constants/studentConstants'
 import NepaliDate from 'nepali-date-converter'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import axios from 'axios'
+import './Student.css'
 const StudentDeepAttendance = ({ match }) => {
   const matchid = match.params.class
   const [studentlist, setStudentlist] = useState([])
-  const [present, setPresent] = useState(false)
+  const [present, setPresent] = useState({})
   const dispatch = useDispatch()
   const [clicked, setClicked] = useState(false)
   const studentAttendance = useSelector((state) => state.studentAttendance)
@@ -22,11 +24,18 @@ const StudentDeepAttendance = ({ match }) => {
 
   const studentsfinal = students && [...students]
 
-  for (i = 0; i < studentsfinal && studentsfinal.length; i++) {
-    studentsfinal[i].attendance = false
-  }
-
+  // for (i = 0; i < studentsfinal && studentsfinal.length; i++) {
+  //   studentsfinal[i].attendance = false
+  // }
   useEffect(() => {
+    const studentsAttend = async () => {
+      const { data } = await axios.get(
+        `/api/students/class/${matchid}/attendance`
+      )
+      setStudentlist(data.students)
+      // console.log('attended once', data)
+    }
+    studentsAttend()
     dispatch({
       type: STUDENT_ATTENDANCE_RESET,
     })
@@ -35,27 +44,18 @@ const StudentDeepAttendance = ({ match }) => {
   var i = 1
   const submitAttendance = () => {
     // console.log(studentlist)
-    dispatch(studentAttendances(matchid, studentlist))
-    console.log('done')
+    console.log('students list', students)
+    dispatch(studentAttendances(matchid, students))
   }
   const toggleAttendance = (id) => {
-    var x = JSON.parse(localStorage.getItem(matchid))
-
-    setClicked(true)
-
-    setPresent(!present)
-
-    const newStudentsList = x ? [...x] : [...studentsfinal]
-    const element = newStudentsList.findIndex((elem) => elem._id == id)
-    newStudentsList[element] = {
-      ...newStudentsList[element],
-      attendance: !present,
-    }
-    // console.log('later value', present)
-    // console.log(newStudentsList)
-
-    setStudentlist(newStudentsList)
-    localStorage.setItem(matchid, JSON.stringify(newStudentsList))
+    setPresent((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }))
+    const new_students = students.filter((datum) => datum._id === id)
+    // console.log('new_students', new_students)
+    new_students[0].present = !present[id]
+    console.log('students', students)
   }
 
   return (
@@ -67,8 +67,16 @@ const StudentDeepAttendance = ({ match }) => {
             {new NepaliDate().format('YYYY-MM-D')}
           </span>{' '}
         </h1>
+        {studentlist.length > 0 && (
+          <h3
+            style={{ textAlign: 'center', background: 'red', padding: '3px' }}
+          >
+            Attendance already taken for today
+          </h3>
+        )}
+        {/* {console.log('final students', studentsfinal)} */}
         {studentsattendance && (
-          <Message variant='success' message='Successfully taken' />
+          <Message variant='success' message={studentsattendance.message} />
         )}
         {errorattendance && (
           <Message variant='danger' message={errorattendance} />
@@ -90,19 +98,19 @@ const StudentDeepAttendance = ({ match }) => {
               </tr>
             </thead>
             <tbody>
-              {console.log(present)}
-              {clicked
-                ? studentlist.map((student) => (
+              {studentlist.length > 0
+                ? // {  <h1></h1>}
+                  studentlist.map((student) => (
                     <tr key={student._id} className='attendance'>
                       <td>{i++}</td>
                       <td>{student.student_name}</td>
                       <td>{student.roll_no}</td>
                       <td
                         onClick={() => toggleAttendance(student._id)}
-                        className={student.attendance ? 'present' : 'absent'}
+                        className={student.present ? 'present' : 'absent'}
                         style={{ cursor: 'pointer' }}
                       >
-                        {student.attendance ? 'Present' : 'Absent'}
+                        {student.present ? 'Present' : 'Absent'}
                       </td>
                     </tr>
                   ))
@@ -114,10 +122,10 @@ const StudentDeepAttendance = ({ match }) => {
                       <td>{student.roll_no}</td>
                       <td
                         onClick={() => toggleAttendance(student._id)}
-                        className={student.attendance ? 'present' : 'absent'}
+                        className={present[student._id] ? 'present' : 'absent'}
                         style={{ cursor: 'pointer' }}
                       >
-                        {student.attendance ? 'Present' : 'Absent'}
+                        {present[student._id] ? 'Present' : 'Absent'}
                       </td>
                     </tr>
                   ))}
@@ -127,7 +135,12 @@ const StudentDeepAttendance = ({ match }) => {
         <button
           onClick={submitAttendance}
           style={{ marginTop: '10px', maxWidth: '30%', display: 'block' }}
-          className='btn-register'
+          disabled={studentlist.length > 0}
+          className={
+            studentlist.length > 0
+              ? 'btn-register disable'
+              : 'btn-register enable'
+          }
         >
           Submit
         </button>

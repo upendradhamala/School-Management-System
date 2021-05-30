@@ -688,3 +688,13 @@ place-content: center;
 .allIncome p{
     /* padding:40px; */
 }
+
+
+.disable{
+    opacity: 0.5;
+
+  }
+ .disable:hover{
+    opacity: 0.5;
+
+  }

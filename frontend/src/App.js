@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Landing from './screens/Landing'
+// import
 // import { Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './screens/Login'
@@ -17,7 +18,6 @@ import StudentClassAdmitCardDeep from './screens/StudentClassAdmitCardDeep'
 import ParticularStudentAdmitCard from './screens/ParticularStudentAdmitCard'
 import TeacherSalary from './screens/TeacherSalary'
 import StaffSalary from './screens/StaffSalary'
-import ImcomeScreen from './screens/IncomeScreen'
 import TeacherRegister from './screens/TeacherRegister'
 import AllTeachers from './screens/AllTeachers'
 import AllStaffs from './screens/AllStaffs'
@@ -25,6 +25,7 @@ import StaffRegister from './screens/StaffRegister'
 import IncomeScreen from './screens/IncomeScreen'
 import ExpenseScreen from './screens/ExpenseScreen'
 import underConstruction from './components/underConstruction'
+import { studentAttendances } from './actions/studentActions'
 // import ExpenseScreen from './screens/ExpenseScreen'
 
 const App = () => {
@@ -42,17 +43,17 @@ const App = () => {
             component={StudentDeepDetails}
             exact
           />
-          <Route
+          {/* <Route
             path='/student-attendance'
             component={underConstruction}
             exact
-          />
-           <Route
+          /> */}
+          <Route
             path='/teacher_attendance'
             component={underConstruction}
             exact
           />
-           <Route
+          <Route
             path='/non-teaching_staff_attendance'
             component={underConstruction}
             exact
@@ -104,6 +105,11 @@ const App = () => {
           />
           <Route path='/income' component={IncomeScreen} exact />
           <Route path='/salary' component={ExpenseScreen} exact />
+          <Route
+            path='/student-attendance'
+            component={StudentAttendance}
+            exact
+          />
         </Switch>
       </div>
     </Router>

@@ -30,6 +30,24 @@ router.get(
     }
   })
 )
+// the following route is for loading attendance and students info.
+router.get(
+  '/class/:id/attendance',
+  asyncHandler(async (req, res) => {
+    const students = await StudentAttendance.findOne({
+      attendance_date: new NepaliDate().format('YYYY-MM-D'),
+      classname: req.params.id,
+    })
+    // console.log("students",students.length())
+    if (students) {
+      console.log(students)
+
+      res.json(students)
+    } else {
+      res.status(404).json({ message: 'No students found.' })
+    }
+  })
+)
 
 //following route is for searching the students with the given name ,class and roll no
 router.get(
@@ -152,10 +170,12 @@ router.post(
     })
     console.log(attendanceFound)
     if (attendanceFound) {
-      res.status(500)
-      throw new Error(
-        `You have already taken class ${req.params.classname} attendance for today.`
+      await StudentAttendance.updateOne(
+        { _id: attendanceFound._id },
+        { $set: { students: students } }
       )
+      console.log('done with re-attendance')
+      res.status(201).json({ message: 'Attendance retaken successfully' })
     } else {
       const new_attendance = await StudentAttendance.create({
         class_teacher,
@@ -163,7 +183,7 @@ router.post(
         attendance_date: new NepaliDate().format('YYYY-MM-D'),
         students,
       })
-      // console.log(new_attendance)
+      console.log(new_attendance)
       if (new_attendance) {
         res.status(201).json({
           message: 'Attendance taken successfully',
