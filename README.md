@@ -2,7 +2,7 @@
 
 This is a MERN stack website which can be used for managing the school. It has almost all features and few are in development phase.
 
-######## `Please give this repo a star if this project helped you in any way. This will mean a lot to me and motivate me more to bring this type of project.`
+`Please give this repo a star if this project helped you in any way. This will mean a lot to me and motivate me more to bring this type of project.`
 
 ### `LIVE SITE`
 
