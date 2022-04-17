@@ -16,11 +16,7 @@ const Landing = ({ history }) => {
   const closeSidebar = () => {
     setsidebarOpen(false)
   }
-  useEffect(() => {
-    if (!userCred) {
-      history.push('/login')
-    }
-  }, [userCred, history])
+
   return (
     <div className='containers'>
       <Header sidebarOpen={sidebarOpen} openSidebar={openSidebar} />

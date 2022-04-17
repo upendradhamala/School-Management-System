@@ -17,3 +17,20 @@
   display: block;
 } */
           /* // style={{ marginTop: '10px', maxWidth: '30%', display: 'block' }} */
+
+          .notFound{
+          
+            height: 100vh;
+            /* border: 1px solid red; */
+            overflow: hidden;
+            width: 100%;
+         
+           
+          }
+          .notFound img{
+            /* border: 1px solid red; */
+          height: 100vh;
+         margin: auto;
+         display: block;
+
+          }

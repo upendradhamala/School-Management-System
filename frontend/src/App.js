@@ -23,9 +23,12 @@ import AllTeachers from './screens/AllTeachers'
 import AllStaffs from './screens/AllStaffs'
 import StaffRegister from './screens/StaffRegister'
 import IncomeScreen from './screens/IncomeScreen'
+import NotFound from './screens/NotFound'
+
 import ExpenseScreen from './screens/ExpenseScreen'
 import underConstruction from './components/underConstruction'
 import { studentAttendances } from './actions/studentActions'
+import PrivateRoute from '../src/utils/PrivateRoute'
 // import ExpenseScreen from './screens/ExpenseScreen'
 
 const App = () => {
@@ -33,83 +36,96 @@ const App = () => {
     <Router>
       <div>
         <Switch>
-          <Route path='/' component={Landing} exact />
+          <PrivateRoute path='/' component={Landing} exact />
           <Route path='/login' component={Login} exact />
-          <Route path='/student-register' component={StudentRegister} />
-          <Route path='/student-fee' component={StudentFees} />
-          <Route path='/student_details' component={StudentDetails} exact />
-          <Route
+          <PrivateRoute path='/student-register' component={StudentRegister} />
+          <PrivateRoute path='/student-fee' component={StudentFees} />
+          <PrivateRoute
+            path='/student_details'
+            component={StudentDetails}
+            exact
+          />
+          <PrivateRoute
             path='/student_details/details/:id'
             component={StudentDeepDetails}
             exact
           />
-          {/* <Route
+          {/* <PrivateRoute
             path='/student-attendance'
             component={underConstruction}
             exact
           /> */}
-          <Route
+          <PrivateRoute
             path='/teacher_attendance'
             component={underConstruction}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/non-teaching_staff_attendance'
             component={underConstruction}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/student-attendance/:class'
             component={StudentDeepAttendance}
             exact
           />
-          <Route path='/students' component={AllStudents} exact />
-          <Route path='/admit_card' component={StudentAdmitCard} exact />
-          <Route
+          <PrivateRoute path='/students' component={AllStudents} exact />
+          <PrivateRoute path='/admit_card' component={StudentAdmitCard} exact />
+          <PrivateRoute
             path='/admit_card/allstudents'
             component={AllStudentsAdmitCard}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/admit_card/classes'
             component={StudentClassAdmitCard}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/admit_card/classes/:id'
             component={StudentClassAdmitCardDeep}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/admit_card/student'
             component={ParticularStudentAdmitCard}
             exact
           />
-          <Route path='/teacher_salary' component={TeacherSalary} exact />
-          <Route path='/teacher_register' component={TeacherRegister} exact />
-          <Route path='/teacher_details' component={AllTeachers} exact />
-          <Route
+          <PrivateRoute
+            path='/teacher_salary'
+            component={TeacherSalary}
+            exact
+          />
+          <PrivateRoute
+            path='/teacher_register'
+            component={TeacherRegister}
+            exact
+          />
+          <PrivateRoute path='/teacher_details' component={AllTeachers} exact />
+          <PrivateRoute
             path='/non-teaching_staff_details'
             component={AllStaffs}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/non-teaching_staff_register'
             component={StaffRegister}
             exact
           />
-          <Route
+          <PrivateRoute
             path='/non-teaching_staff_salary'
             component={StaffSalary}
             exact
           />
-          <Route path='/income' component={IncomeScreen} exact />
-          <Route path='/salary' component={ExpenseScreen} exact />
-          <Route
+          <PrivateRoute path='/income' component={IncomeScreen} exact />
+          <PrivateRoute path='/salary' component={ExpenseScreen} exact />
+          <PrivateRoute
             path='/student-attendance'
             component={StudentAttendance}
             exact
           />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </Router>
