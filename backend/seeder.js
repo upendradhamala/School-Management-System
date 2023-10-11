@@ -1,11 +1,6 @@
-import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-//following users is for who can insert into the database.
-
-import users from './data/users.js'
-import items from './data/Data.js'
-import students from './data/studentData.js'
-import Student from './models/studentModel.js'
+import {users} from './data/users.js'
+import {items} from './data/Data.js'
 import Dashboard from './models/dashboardModel.js'
 import Admin from './models/adminModel.js'
 
@@ -15,18 +10,19 @@ connectDB()
 const importData = async () => {
   try {
     await Admin.deleteMany()
-    await Student.deleteMany()
+    // await Student.deleteMany()
     await Dashboard.deleteMany()
-    const createdUsers = await Admin.insertMany(users)
-    console.log('inserted users')
-    const adminUser = createdUsers[0]._id
+    // const createdUsers =
+   await Admin.insertMany(users)
+    // console.log('inserted users')
+    // const adminUser = createdUsers[0]._id
 
-    const sampleStudents = students.map((student) => {
-      return { ...student, user: adminUser }
-    })
+    // const sampleStudents = students.map((student) => {
+    //   return { ...student, user: adminUser }
+    // })
 
-    await Dashboard.insertMany(items)
-    await Student.insertMany(sampleStudents)
+  await Dashboard.insertMany(items)
+    // await Student.insertMany(sampleStudents)
 
 
     console.log('Data imported.')
@@ -37,9 +33,9 @@ const importData = async () => {
   }
 }
 
-const exportData = async () => {
+const destroyData = async () => {
   try {
-    await Student.deleteMany()
+    // await Student.deleteMany()
     await Dashboard.deleteMany()
     await Admin.deleteMany()
     

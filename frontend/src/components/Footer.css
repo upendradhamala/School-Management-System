@@ -10,7 +10,10 @@
     text-align: center;
     background: rgb(0, 110, 255);
     color:white;
-    /* position: fixed; */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 .emoji{
     /* display: inline-block; */
@@ -18,13 +21,3 @@
     font-size: 15px;
 }
 
-
-@media only screen and (min-width: 800px) {
-  
-  #footer{
-margin-top: 115px;
-/* bottom:0px; */
-position: relative;
-  }
-  }
-  

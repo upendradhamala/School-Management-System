@@ -35,10 +35,10 @@ const StudentRegister = ({ history }) => {
     const file = e.target.files[0]
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    formData.append('upload_preset',process.env.REACT_APP_CLOUD_PRESET)
     setUploading(true)
     await axios({
-      url: CLOUDINARY_URL,
+      url: `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`,
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

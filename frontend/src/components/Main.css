@@ -1,6 +1,7 @@
 main {
     background: #f3f4f6;
     grid-area: main;
+    position: relative;
     overflow-y: auto;
   }
   .card-handler{

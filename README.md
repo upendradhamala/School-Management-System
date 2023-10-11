@@ -2,7 +2,7 @@
 
 This is a MERN stack website which can be used for managing the school. It has almost all features and few are in development phase.
 
-`Please give this repo a star if this project helped you in any way. This will mean a lot to me and motivate me more to bring this type of project.`
+`Please give this repo a star if this project helped you in any way. This will mean a lot to me and motivate me more to bring this type of project. (Live url does not work as of now due to heroku removing free services)`
 
 ### `LIVE SITE`
 
@@ -15,7 +15,7 @@ https://manageschool1.herokuapp.com/
 
 ```bash
 Login email="admin1@example.com"
-Login password="123456"
+Login password="adminpassword1"
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ npm install
 
 ### `ENV Variables`
 
-Create a .env file in the root and add the following
+Create a .env file in the root and add the following. You can see .env.example for format.
 
 ```bash
 NODE_ENV=development
@@ -52,14 +52,26 @@ JWT_SECRET="Anything you like"
 CLOUDINARY_URL ="your cloudinary url"
 CLOUDINARY_UPLOAD_PRESET = "your cloudinary preset "
 ```
-
-### `Running`
+Create a .env file in the frontend folder and add the following. You can see .env.example for format.
 
 ```bash
-Go to the root folder
-npm run dev
-
+REACT_APP_CLOUD_NAME="Your value"
+REACT_APP_CLOUD_PRESET="Your value"
 ```
+### `Running`
+
+Go to the root folder and at first seed the database through command
+
+```bash
+npm run data:import
+```
+
+After seed is successful run following command to run both backend and frontend concurrently
+
+```bash
+npm run dev
+```
+
 
 ### `Homepage`
 
