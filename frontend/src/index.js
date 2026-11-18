@@ -4,11 +4,14 @@ import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
 import store from './store'
+import setupAxios from './utils/setupAxios'
 import './index.css'
 import App from './App'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 //after importing the Provider, it's time to pass it to the wrapper as follow-
+setupAxios(store)
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

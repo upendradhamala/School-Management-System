@@ -1,42 +1,49 @@
 // following is the es modules declaration style in nodejs
 import express from 'express'
 import path from 'path'
-
-// import products from "./data/"
-// const express = require('express')
 import dotenv from 'dotenv'
+import asyncHandler from 'express-async-handler'
 import connectDB from './config/db.js'
-// import items from './data/Data.js'
 import Dashboard from './models/dashboardModel.js'
-// import classes from './data/ClassData.js'
 import studentRoutes from './routes/studentRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
 import teacherRoutes from './routes/teacherRoutes.js'
 import staffRoutes from './routes/staffRoutes.js'
-// const items = require('./data/Data')
-// const classes = require('./data/ClassData')
-// d0t
+import protect from './middleware/authMiddleware.js'
+
 dotenv.config()
+
+if (!process.env.JWT_SECRET) {
+  console.error('JWT_SECRET is not set. Add it to your .env file.')
+  process.exit(1)
+}
+
 connectDB()
 const app = express()
 app.use(express.json())
 
-app.get('/dashboard', async (req, res) => {
-  const items = await Dashboard.find()
-  console.log(items)
-  res.json(items)
-})
-
-app.use('/api/students', studentRoutes)
+// Login is the only public API route. Everything else holds personal data
+// (students, parents, staff, fees, salaries) and requires a logged-in admin.
 app.use('/api/login', adminRoutes)
-app.use('/api/teachers', teacherRoutes)
-app.use('/api/staffs', staffRoutes)
-app.get('/api/config/cloudinary', (req, res) => {
-  res.send(process.env.CLOUDINARY_URL)
-})
-app.get('/api/config/cloudinarypreset', (req, res) => {
-  res.send(process.env.CLOUDINARY_UPLOAD_PRESET)
-})
+
+app.get(
+  '/dashboard',
+  protect,
+  asyncHandler(async (req, res) => {
+    const items = await Dashboard.find()
+    res.json(items)
+  })
+)
+
+app.use('/api/students', protect, studentRoutes)
+app.use('/api/teachers', protect, teacherRoutes)
+app.use('/api/staffs', protect, staffRoutes)
+
+// NOTE: the old /api/config/cloudinary route was removed on purpose.
+// CLOUDINARY_URL contains the Cloudinary API secret and was being sent to
+// anyone who asked. The frontend uploads with REACT_APP_CLOUD_NAME and
+// REACT_APP_CLOUD_PRESET (an unsigned preset), so it never needed it.
+
 const __dirname = path.resolve()
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')))
@@ -44,30 +51,38 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
   )
 } else {
-  app.get('/', async (req, res) => {
+  app.get('/', (req, res) => {
     res.send('API is running...')
   })
 }
 
-//the following router is for displaying the class labels
-
-//following route is for displaying the list of students
-//according to the classses
-
-//following route will only be used in case the error is encountered.
-//FOLLOWING IS THE FALL BACK ROUTE for url not listed in the backend folder
+// FALL BACK ROUTE for urls not handled above
 app.use((req, res, next) => {
-  const error = new Error(`Not found -${req.originalUrl}`)
+  const error = new Error(`Not found - ${req.originalUrl}`)
   res.status(404)
   next(error)
 })
+
 app.use((err, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode
+  let statusCode = res.statusCode === 200 ? 500 : res.statusCode
+  let message = err.message
+
+  // malformed MongoDB ObjectId, e.g. /api/students/delete/abc
+  if (err.name === 'CastError') {
+    statusCode = 404
+    message = 'Resource not found'
+  }
+  // mongoose schema validation (missing required fields etc.)
+  if (err.name === 'ValidationError') {
+    statusCode = 400
+  }
+
   res.status(statusCode)
   res.json({
-    message: err.message,
+    message,
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
   })
 })
+
 const PORT = process.env.PORT || 5000
-app.listen(PORT, console.log(`Server running on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

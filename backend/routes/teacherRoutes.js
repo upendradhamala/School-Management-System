@@ -1,6 +1,5 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
-import protect from '../middleware/authMiddleware.js'
 import Teacher from '../models/teacherModel.js'
 import capitalize from '../config/capitalize.js'
 import Dashboard from '../models/dashboardModel.js'
@@ -8,15 +7,14 @@ import StudentFees from '../models/studentFeesModel.js'
 import TeacherSalary from '../models/teacherSalaryModel.js'
 import TeacherAttendance from '../models/teacherAttendanceModel.js'
 import NonTeachingStaffSalary from '../models/nonTeachingStaffSalary.js'
+import { updateSalaryTotal } from '../utils/dashboardTotals.js'
 const router = express.Router()
 
 //following router is for registering the teacher
 
 router.post(
   '/register',
-  //the protect used here is used for getting the id of the admin who registered the teacher
 
-  protect,
   asyncHandler(async (req, res) => {
     const {
       teacher_name,
@@ -37,21 +35,16 @@ router.post(
     } = req.body
     // const teacher_info =
     const teacher_info =
-      (await Teacher.find()) &&
-      (await Teacher.findOne().sort({ teacherId: -1 }).limit(1))
-    console.log('teacher info', teacher_info)
+      await Teacher.findOne().sort({ teacherId: -1 })
     if (teacher_info) {
       var teacherId = teacher_info.teacherId + 1
     } else {
       var teacherId = 1
     }
 
-    console.log(req.body)
     const registered_by = req.user.name
 
-    console.log(registered_by)
 
-    console.log('teacher id is-', teacherId)
     const teachername = capitalize(teacher_name)
     const new_teacher = await Teacher.create({
       registered_by,
@@ -72,22 +65,17 @@ router.post(
       image,
       subjectToTeach,
     })
-    console.log(new_teacher)
     if (new_teacher) {
-      const total_teachers = (await Teacher.find()).length
+      const total_teachers = await Teacher.countDocuments()
       await Dashboard.findOneAndUpdate(
         { title: 'Teachers' },
         { number: total_teachers }
       )
-      console.log('done')
-      console.log('total number of students', total_teachers)
       res.status(201).json({
         message: 'Teacher registered successfully',
       })
-      console.log('registered successfully')
     } else {
       res.status(400)
-      console.log(error)
       throw new Error('Unable to register the teacher')
     }
   })
@@ -113,8 +101,8 @@ router.delete(
   asyncHandler(async (req, res) => {
     const teacher = await Teacher.findOne({ teacherId: req.params.id })
     if (teacher) {
-      await teacher.remove()
-      const total_teachers = (await Teacher.find()).length
+      await teacher.deleteOne()
+      const total_teachers = await Teacher.countDocuments()
       await Dashboard.findOneAndUpdate(
         { title: 'Teachers' },
         { number: total_teachers }
@@ -131,26 +119,19 @@ router.delete(
 
 router.post(
   '/fees/:name/:id',
-  //the protect used here is used for getting the id of the admin who registered the teacher
 
-  protect,
   asyncHandler(async (req, res) => {
     const { salaryForTheYear, salaryForTheMonth, salaryAmount } = req.body
-    console.log(req.body)
     // const teacher_info =
     const teacher_info = await Teacher.findOne({
       teacher_name: capitalize(req.params.name),
       teacherId: req.params.id,
     })
-    console.log(capitalize(req.params.name + ' ' + req.params.id))
 
-    console.log('teacher info', teacher_info)
     if (teacher_info) {
       const admin = req.user.name
 
-      // console.log(admin)
 
-      // console.log('teacher id is-', teacherId)
       const teachername = capitalize(req.params.name)
       const monthname = capitalize(salaryForTheMonth)
       const new_teacher = await TeacherSalary.create({
@@ -162,36 +143,13 @@ router.post(
         salaryForTheMonth: monthname,
         salaryAmount,
       })
-      console.log(new_teacher)
       if (new_teacher) {
-        const Fees = await TeacherSalary.find()
-          .select('salaryAmount')
-          .select('-_id')
-        console.log('Fees', Fees)
-        var total_Fees = 0
-
-        var total_Fees = 0
-        Fees.map((fee) => (total_Fees = total_Fees + fee.salaryAmount))
-        const Fees1 = await NonTeachingStaffSalary.find()
-          .select('salaryAmount')
-          .select('-_id')
-
-        var total_Fees1 = 0
-        Fees1.map(
-          (fee) => (total_Fees1 = total_Fees1 + fee.salaryAmount)
-          // return total_Fees
-        )
-        await Dashboard.findOneAndUpdate(
-          { title: 'Salary Expenses' },
-          { number: total_Fees + total_Fees1 }
-        )
+        await updateSalaryTotal()
         res.status(201).json({
           message: 'Teacher salary paid successfully',
         })
-        console.log('paid successfully')
       } else {
         res.status(400)
-        console.log(error)
         throw new Error('Unable to pay the salary')
       }
     } else {
@@ -240,8 +198,6 @@ router.get(
       year: req.params.year,
       month_name: capitalize(req.params.month),
     })
-    console.log('hello')
-    console.log(req.params.year + req.params.month)
     if (income.length > 0) {
       // res.status(201)
       res.json(income)
@@ -282,8 +238,6 @@ router.get(
     const staff_salary = await NonTeachingStaffSalary.find({
       salaryForTheYear: req.params.year,
     })
-    console.log(salary)
-    console.log('staffsalary', staff_salary)
     if (salary.length > 0 || staff_salary.length > 0) {
       var new_salary = salary.concat(staff_salary)
       res.json(new_salary)
@@ -302,7 +256,6 @@ router.get(
       salaryForTheYear: req.params.year,
       salaryForTheMonth: capitalize(req.params.month),
     })
-    console.log('hello')
     const staff_salary = await NonTeachingStaffSalary.find({
       salaryForTheYear: req.params.year,
       salaryForTheMonth: capitalize(req.params.month),
