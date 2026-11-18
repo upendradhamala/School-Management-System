@@ -1,30 +1,34 @@
 import jwt from 'jsonwebtoken'
 import Admin from '../models/adminModel.js'
 import asyncHandler from 'express-async-handler'
-const protect = asyncHandler(async (req, res, next) => {
-  let token
 
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
-    try {
-      token = req.headers.authorization.split(' ')[1]
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      //   console.log(decoded)
-      req.user = await Admin.findById(decoded.id).select('-password')
-      console.log('value of req.user is ', req.user)
-      next()
-    } catch (error) {
-      console.error(error)
-      res.status(401)
-      //here we can also return the message that our token has expired
-      throw new Error('Not authorized, token failed')
-    }
-  } else {
+// Verifies the Bearer token and attaches the logged-in admin to req.user.
+const protect = asyncHandler(async (req, res, next) => {
+  const header = req.headers.authorization
+  if (!header || !header.startsWith('Bearer ')) {
     res.status(401)
     throw new Error('Not authorized, no token')
   }
+
+  let decoded
+  try {
+    decoded = jwt.verify(header.split(' ')[1], process.env.JWT_SECRET)
+  } catch (error) {
+    res.status(401)
+    throw new Error('Not authorized, token failed')
+  }
+
+  const user = await Admin.findById(decoded.id).select('-password')
+  if (!user) {
+    // token is valid but the account no longer exists
+    res.status(401)
+    throw new Error('Not authorized, user not found')
+  }
+
+  req.user = user
+  // next() is called outside the try/catch so that errors thrown by later
+  // handlers are not misreported as authentication failures
+  next()
 })
 
 export default protect

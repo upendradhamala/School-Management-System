@@ -9,9 +9,15 @@ const router = express.Router()
 router.post(
   '/',
   asyncHandler(async (req, res) => {
-    // const students = await Student.find({})
     const { email, password } = req.body
-    const user = await Admin.findOne({ email })
+    // Only accept plain strings. Without this, a body like
+    // {"email": {"$ne": null}} is passed straight into the MongoDB query.
+    if (typeof email !== 'string' || typeof password !== 'string') {
+      res.status(400)
+      throw new Error('Email and password are required')
+    }
+
+    const user = await Admin.findOne({ email: email.trim() })
     if (user && (await user.matchPassword(password))) {
       res.json({
         _id: user._id,
@@ -28,26 +34,18 @@ router.post(
   })
 )
 
-//get logged in user's profile
-//may be this route is for fetching information from the token
-//stored in the local storge in our browser which is chrome in my case
-
+// get the logged in user's profile from the token
 router.get(
   '/user',
   protect,
   asyncHandler(async (req, res) => {
-    const user = await Admin.findById(req.user._id)
-    if (user) {
-      res.json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        isAdmin: user.isAdmin,
-      })
-    } else {
-      res.status(404)
-      throw new Error('User not found')
-    }
+    const user = req.user
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    })
   })
 )
 

@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^5.12.4",
     "nepali-date-converter": "^3.3.1"
   },
