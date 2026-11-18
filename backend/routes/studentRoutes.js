@@ -202,6 +202,7 @@ router.post(
 //following route is for deleting the student
 router.delete(
   '/delete/:id',
+  protect,
   asyncHandler(async (req, res) => {
     const student = await Student.findById(req.params.id)
     if (student) {
